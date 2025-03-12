@@ -5,20 +5,16 @@ import type { RouteLocationRaw, RouteMap } from "vue-router";
 import hangarLogo from "~/assets/hangar-logo.svg";
 
 import IconMdiHome from "~icons/mdi/home";
+import IconMdiDiscord from "~icons/mdi/discord";
 import IconMdiAccountGroup from "~icons/mdi/account-group";
-import IconMdiForum from "~icons/mdi/forum";
-import IconMdiCodeBraces from "~icons/mdi/code-braces";
+import IconMdiCodeBraces from "~icons/mdi/github";
 import IconMdiBookOpen from "~icons/mdi/book-open";
-import IconMdiLanguageJava from "~icons/mdi/language-java";
-import IconMdiDownloadCircle from "~icons/mdi/download-circle";
 import IconMdiFileDocumentAlert from "~icons/mdi/file-document-alert";
 import IconMdiAlertOutline from "~icons/mdi/alert-outline";
 import IconMdiInformationOutline from "~icons/mdi/information-outline";
 import IconMdiMessageOutline from "~icons/mdi/message-outline";
 import IconMdiCheck from "~icons/mdi/check";
 import IconMdiFolderPlusOutline from "~icons/mdi/folder-plus-outline";
-import IconMdiFolderWrenchOutline from "~icons/mdi/folder-wrench-outline";
-import IconMdiFolderInformationOutline from "~icons/mdi/folder-information-outline";
 
 import { type HangarNotification, type HangarUser, NamedPermission } from "~/types/backend";
 import { useUnreadNotificationCount } from "~/composables/useData";
@@ -40,8 +36,9 @@ type NavBarLinks = { link: keyof RouteMap; label: string; icon?: any }[];
 
 const navBarLinks: NavBarLinks = [
   { link: "index", label: t("nav.indexTitle") },
-  { link: "authors", label: t("nav.authorsTitle") },
-  { link: "staff", label: t("nav.staffTitle") },
+  { link: "official_plugins", label: t("nav.officialPlugins") },
+  { link: "paper", label: t("nav.sidePlugins") },
+  { link: "paper", label: t("nav.abilities") },
 ];
 
 const navBarMenuLinksHangar: NavBarLinks = [
@@ -56,23 +53,14 @@ if (!authStore.user) {
   navBarMenuLinksHangar.splice(2, 2);
 }
 
-const navBarMenuLinksTools: NavBarLinks = [
-  { link: "tools-importer", label: t("nav.tools.importer"), icon: IconMdiFolderPlusOutline },
-  { link: "tools-bbcode", label: t("nav.tools.bbcode"), icon: IconMdiFolderWrenchOutline },
-  { link: "tools-markdown", label: t("nav.tools.markdown"), icon: IconMdiFolderWrenchOutline },
-  { link: "version", label: t("nav.tools.version"), icon: IconMdiFolderInformationOutline },
-];
-
 const auth = useAuth;
 authLog("render with user " + authStore.user?.name);
 
 const navBarMenuLinksMoreFromPaper = [
-  { link: "https://papermc.io/", label: t("nav.hangar.home"), icon: IconMdiHome },
-  { link: "https://forums.papermc.io/", label: t("nav.hangar.forums"), icon: IconMdiForum },
-  { link: "https://github.com/PaperMC", label: t("nav.hangar.code"), icon: IconMdiCodeBraces },
-  { link: "https://docs.papermc.io/", label: t("nav.hangar.docs"), icon: IconMdiBookOpen },
-  { link: "https://papermc.io/javadocs", label: t("nav.hangar.javadocs"), icon: IconMdiLanguageJava },
-  { link: "https://papermc.io/downloads", label: t("nav.hangar.downloads"), icon: IconMdiDownloadCircle },
+  { link: "https://projectkorra.com/", label: t("nav.hangar.home"), icon: IconMdiHome },
+  { link: "https://discord.gg/pPJe5p3", label: t("nav.hangar.discord"), icon: IconMdiDiscord },
+  { link: "https://github.com/ProjectKorra/", label: t("nav.hangar.code"), icon: IconMdiCodeBraces },
+  { link: "https://projectkorra.com/wiki/", label: t("nav.hangar.docs"), icon: IconMdiBookOpen },
 ];
 
 function markNotificationsRead() {
@@ -147,26 +135,10 @@ function isRecent(date: string): boolean {
           <PopoverPanel
             class="absolute top-10 z-10 w-max lt-sm:w-90vw background-default left-1/20 filter shadow-default rounded-r-md rounded-bl-md border-top-primary text-sm p-[20px]"
           >
-            <p class="text-base font-semibold color-primary mb-3">Hangar</p>
+            <p class="text-base font-semibold color-primary mb-3">Create</p>
             <div class="grid grid-cols-2">
               <NuxtLink
                 v-for="link in navBarMenuLinksHangar"
-                :key="link.label"
-                :to="{ name: link.link } as RouteLocationRaw"
-                class="flex items-center rounded-md px-6 py-2"
-                hover="text-primary-500 bg-primary-0"
-                v-on="useTracking('nav-burger-link', { link: link.link })"
-                @click="close()"
-              >
-                <component :is="link.icon" class="mr-3 text-[1.2em]" />
-                {{ link.label }}
-              </NuxtLink>
-            </div>
-
-            <p class="text-base font-semibold color-primary mb-3 mt-6">{{ t("nav.hangar.tools") }}</p>
-            <div class="grid grid-cols-2">
-              <NuxtLink
-                v-for="link in navBarMenuLinksTools"
                 :key="link.label"
                 :to="{ name: link.link } as RouteLocationRaw"
                 class="flex items-center rounded-md px-6 py-2"

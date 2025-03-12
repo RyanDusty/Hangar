@@ -58,9 +58,10 @@
       "categories": "Categories",
       "licenses": "Licenses",
       "versions": {
-        "PAPER": "Minecraft versions",
-        "WATERFALL": "Waterfall versions",
-        "VELOCITY": "Velocity versions"
+        "MINECRAFT": "Minecraft/Spigot versions",
+        "PROJECTKORRA": "ProjectKorra versions",
+        "PAPER": "Paper Supported",
+        "ASSET": "Assets"
       },
       "platforms": "Platforms",
       "tags": "Tags"
@@ -86,6 +87,9 @@
   "nav": {
     "indexTitle": "Home",
     "authorsTitle": "Authors",
+    "officialPlugins": "Official Plugins",
+    "sidePlugins": "Side Plugins",
+    "abilities": "Abilities",
     "staffTitle": "Staff",
     "login": "Login",
     "signup": "Signup",
@@ -129,11 +133,12 @@
     },
     "hangar": {
       "tools": "Hangar Tools",
-      "moreFrom": "More from PaperMC",
+      "moreFrom": "Socials",
       "home": "Homepage",
       "forums": "Forums",
       "code": "GitHub",
-      "docs": "Docs",
+      "discord": "Discord",
+      "docs": "Wiki",
       "javadocs": "JavaDocs",
       "downloads": "Downloads",
       "community": "Community"
@@ -165,16 +170,15 @@
     },
     "category": {
       "info": "Category",
-      "admin_tools": "Admin Tools",
-      "chat": "Chat",
-      "dev_tools": "Developer Tools",
-      "economy": "Economy",
-      "gameplay": "Gameplay",
-      "games": "Games",
-      "protection": "Protection",
-      "role_playing": "Role Playing",
-      "world_management": "World Management",
-      "misc": "Miscellaneous",
+      "official_plugins": "Official Plugins",
+      "ability": "Bending Ability",
+      "side_plugin": "Side Plugin",
+      "ability_pack": "Ability Pack",
+      "data_pack": "Data Pack",
+      "resource_pack": "Resource Pack",
+      "world": "World/Build",
+      "config": "Config File",
+      "other": "Other",
       "undefined": "ERROR"
     },
     "actions": {
@@ -477,7 +481,7 @@
       "steps": {
         "1": {
           "header": "Artifact",
-          "back": "Abort",
+          "back": "Cancel",
           "continue": "Next"
         },
         "2": {
@@ -1208,10 +1212,10 @@
     }
   },
   "error": {
-    "userLocked": "Your account is locked.",
     "401": "You must be logged in for this",
     "403": "You do not have permission to do that",
     "404": "404 Not found",
+    "userLocked": "Your account is locked.",
     "unknown": "An error occurred",
     "aal1": "You need to verify your email first",
     "aal2": "You need to setup 2fa first",

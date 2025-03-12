@@ -21,7 +21,7 @@ const sorters = [
   { id: "-newest", label: i18n.t("project.sorting.newest") },
 ];
 
-const toArray = (input: (string | null)[] | string | null): string[] => (Array.isArray(input) ? (input as string[]) : input ? [input!] : []);
+const toArray = (input: (string | null)[] | string | null): string[] => (Array.isArray(input) ? (input as string[]) : (input ? [input!] : []));
 const filters = ref({
   versions: toArray(route.query.version),
   categories: toArray(route.query.category),
@@ -91,12 +91,12 @@ function updatePlatform(platform: any) {
 
 const config = useRuntimeConfig();
 const pageChangeScrollAnchor = useTemplateRef<HTMLElement>("pageChangeScrollAnchor");
-const ssr = import.meta.server;
+//const ssr = import.meta.server;
 
 useSeo(
   computed(() => ({
-    title: `Hangar - The best place to download ${props.index ? "Minecraft" : props.platformName} plugins`,
-    description: `Hangar allows you to find and download the best ${props.index ? "Minecraft" : props.platformName} plugins for your Minecraft server`,
+    title: `ProjectKorra | Downloads`,
+    description: `Download all ProjectKorra plugins, side plugins and custom abilities here!`,
     route,
     additionalScripts: [
       {
@@ -123,31 +123,10 @@ useSeo(
   <div>
     <Container class="flex flex-col items-center gap-4">
       <template v-if="index">
-        <h1 ref="pageChangeScrollAnchor" class="text-3xl font-bold uppercase text-center mt-4 flex flex-col w-full" data-allow-mismatch>
-          <template v-if="ssr">
-            Find your favorite <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Paper plugins</strong>
-          </template>
-          <template v-else>
-            Find your favorite
-            <div class="h-[36px] overflow-hidden relative">
-              <span class="flex flex-col absolute w-full anim">
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Paper plugins</strong>
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Velocity plugins</strong>
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Waterfall plugins</strong>
-              </span>
-            </div>
-          </template>
-        </h1>
+        <h1 class="text-4xl font-bold uppercase text-center mt-4 flex flex-col w-full">ProjectKorra Downloads</h1>
         <div class="text-1xl text-center mb-2">
-          Hangar allows you to find and download the best Paper plugins, Velocity plugins or Waterfall plugins for your Minecraft server
+          Here you can find all downloads related to ProjectKorra! Including official plugins, side plugins, custom abilities, and more!
         </div>
-      </template>
-      <template v-else>
-        <h1 ref="pageChangeScrollAnchor" class="text-3xl font-bold uppercase text-center mt-4">
-          Find your favorite
-          <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent"> {{ platformName }} plugins </strong>
-        </h1>
-        <div class="text-1xl text-center mb-2">Hangar allows you to find and download the best {{ platformName }} plugins for your Minecraft server</div>
       </template>
       <div v-if="!index" class="text-center -mt-2">
         Looking for other platforms?
@@ -294,7 +273,7 @@ useSeo(
         </div>
       </Card>
     </Container>
-    <h2 class="text-2xl text-center font-bold mt-8">Frequently asked Questions about Hangar (FAQ)</h2>
+    <!---<h2 class="text-2xl text-center font-bold mt-8">Frequently asked Questions about Hangar (FAQ)</h2>
     <div class="md:(ml-15 mr-15)">
       <Card class="mt-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <h3 class="text-lg font-bold mb-1" itemprop="name">What is Hangar?</h3>
@@ -320,7 +299,7 @@ useSeo(
           <div itemprop="text">Yes! Simply use the <Link href="https://github.com/HangarMC/hangar-publish-plugin">Hangar publish plugin for Gradle</Link>.</div>
         </div>
       </Card>
-    </div>
+    </div>--->
   </div>
 </template>
 
