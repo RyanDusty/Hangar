@@ -14,9 +14,10 @@ import org.jdbi.v3.core.enums.EnumByOrdinal;
 public enum Platform {
 
     // NOTE: The order here should always be the order they are displayed whenever there is a list somewhere on the frontend
-    PAPER("Paper", Category.SERVER, "https://papermc.io/downloads", true),
-    WATERFALL("Waterfall", Category.PROXY, "https://papermc.io/downloads#Waterfall", true),
-    VELOCITY("Velocity", Category.PROXY, "https://www.velocitypowered.com/downloads", true);
+    MINECRAFT("Minecraft", Category.JAR, null, true),
+    PROJECTKORRA("ProjectKorra", Category.JAR, null, true),
+    PAPER("Paper", Category.JAR, "https://papermc.io/downloads", true),
+    ASSET("Asset", Category.ASSET, null, false);
 
     private static final Platform[] VALUES = values();
 
@@ -58,8 +59,8 @@ public enum Platform {
     }
 
     public enum Category {
-        SERVER("Server Plugins", "Server"),
-        PROXY("Proxy Plugins", "Proxy");
+        JAR("Jar File", "Jar"),
+        ASSET("Other File Type", "Asset");
 
         private final String name;
         private final String tagName;

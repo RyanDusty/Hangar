@@ -58,7 +58,7 @@ public class OnboardingController extends HangarComponent {
         this.config.checkDev();
         final UserTable userTable = authService.registerUserInternal(new SignupForm(request.username, request.email, request.password, true, null), true, true);
         if (request.admin) {
-            globalRoleService.addRole(new GlobalRoleTable(userTable.getUserId(), GlobalRole.HANGAR_ADMIN));
+            globalRoleService.addRole(new GlobalRoleTable(userTable.getUserId(), GlobalRole.ADMIN));
         }
     }
     public record CreateUserRequest(String username, String password, String email, boolean admin) {}

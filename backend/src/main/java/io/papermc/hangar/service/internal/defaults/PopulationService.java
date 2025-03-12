@@ -80,9 +80,9 @@ public class PopulationService {
         final Map<Platform, List<String>> platformVersions = this.platformVersionDAO.getVersions();
         if (platformVersions.isEmpty()) {
             log.info("Populating 'platform_versions' table with initial values");
-            this.platformVersionDAO.insertAll(this.paperVersions.stream().map(v -> new PlatformVersionTable(Platform.PAPER, v)).collect(Collectors.toList()));
-            this.platformVersionDAO.insertAll(this.velocityVersions.stream().map(v -> new PlatformVersionTable(Platform.VELOCITY, v)).collect(Collectors.toList()));
-            this.platformVersionDAO.insertAll(this.waterfallVersions.stream().map(v -> new PlatformVersionTable(Platform.WATERFALL, v)).collect(Collectors.toList()));
+            this.platformVersionDAO.insertAll(this.paperVersions.stream().map(v -> new PlatformVersionTable(Platform.MINECRAFT, v)).collect(Collectors.toList()));
+            this.platformVersionDAO.insertAll(this.velocityVersions.stream().map(v -> new PlatformVersionTable(Platform.PAPER, v)).collect(Collectors.toList()));
+            this.platformVersionDAO.insertAll(this.waterfallVersions.stream().map(v -> new PlatformVersionTable(Platform.PROJECTKORRA, v)).collect(Collectors.toList()));
         } else {
             log.info("The 'platform_versions' table is already populated");
         }

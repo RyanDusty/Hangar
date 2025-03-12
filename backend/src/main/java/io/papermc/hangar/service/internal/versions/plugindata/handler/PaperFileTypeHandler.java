@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class PaperFileTypeHandler extends FileTypeHandler<PaperFileData> {
 
     protected PaperFileTypeHandler() {
-        super("plugin.yml", Platform.PAPER);
+        super("plugin.yml", Platform.MINECRAFT);
     }
 
     @Override
@@ -53,12 +53,12 @@ public class PaperFileTypeHandler extends FileTypeHandler<PaperFileData> {
             final Set<PluginDependency> dependencies = new HashSet<>();
             if (this.hardDepends != null) {
                 for (final String hardDepend : this.hardDepends) {
-                    dependencies.add(PluginDependency.of(hardDepend, true, Platform.PAPER));
+                    dependencies.add(PluginDependency.of(hardDepend, true, Platform.MINECRAFT));
                 }
             }
             if (this.softDepends != null) {
                 for (final String softDepend : this.softDepends) {
-                    dependencies.add(PluginDependency.of(softDepend, false, Platform.PAPER));
+                    dependencies.add(PluginDependency.of(softDepend, false, Platform.MINECRAFT));
                 }
             }
             return dependencies;

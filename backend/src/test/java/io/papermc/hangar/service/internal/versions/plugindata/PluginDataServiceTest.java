@@ -39,14 +39,14 @@ class PluginDataServiceTest {
         assertEquals("Maintenance", data.getName());
         assertEquals("Enable maintenance mode with a custom maintenance motd and icon.", data.getDescription());
         assertEquals("3.0.5", data.getVersion());
-        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.PAPER));
+        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.MINECRAFT));
 
-        final Set<PluginDependency> deps = data.getDependencies().get(Platform.PAPER);
+        final Set<PluginDependency> deps = data.getDependencies().get(Platform.MINECRAFT);
         assertThat(deps).hasSize(3);
         assertThat(deps).extracting(PluginDependency::getName).containsExactlyInAnyOrder("ProtocolLib", "ServerListPlus", "ProtocolSupport");
         assertThat(deps).extracting(PluginDependency::isRequired).containsOnly(false);
 
-        assertIterableEquals(Set.of("1.13"), data.getPlatformDependencies().get(Platform.PAPER));
+        assertIterableEquals(Set.of("1.13"), data.getPlatformDependencies().get(Platform.MINECRAFT));
     }
 
     @Test
@@ -57,9 +57,9 @@ class PluginDataServiceTest {
         assertEquals("Maintenance", data.getName());
         assertEquals("Enable maintenance mode with a custom maintenance motd and icon.", data.getDescription());
         assertEquals("3.0.5", data.getVersion());
-        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.WATERFALL));
+        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.PROJECTKORRA));
 
-        final Set<PluginDependency> deps = data.getDependencies().get(Platform.WATERFALL);
+        final Set<PluginDependency> deps = data.getDependencies().get(Platform.PROJECTKORRA);
         assertThat(deps)
             .hasSize(2)
             .anyMatch(pd -> pd.getName().equals("ServerListPlus") && !pd.isRequired())
@@ -74,9 +74,9 @@ class PluginDataServiceTest {
         assertEquals("Maintenance", data.getName());
         assertEquals("Enable maintenance mode with a custom maintenance motd and icon.", data.getDescription());
         assertEquals("3.0.5", data.getVersion());
-        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.VELOCITY));
+        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.PAPER));
 
-        final Set<PluginDependency> deps = data.getDependencies().get(Platform.VELOCITY);
+        final Set<PluginDependency> deps = data.getDependencies().get(Platform.PAPER);
         assertThat(deps)
             .hasSize(1)
             .anyMatch(pd -> pd.getName().equals("serverlistplus") && !pd.isRequired());
@@ -90,14 +90,14 @@ class PluginDataServiceTest {
         assertEquals("Maintenance", data.getName());
         assertEquals("Enable maintenance mode with a custom maintenance motd and icon.", data.getDescription());
         assertEquals("3.0.5", data.getVersion());
-        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.PAPER));
+        assertIterableEquals(List.of("KennyTV"), data.getAuthors().get(Platform.MINECRAFT));
 
-        final Set<PluginDependency> deps = data.getDependencies().get(Platform.PAPER);
+        final Set<PluginDependency> deps = data.getDependencies().get(Platform.MINECRAFT);
         assertThat(deps).hasSize(3);
         assertThat(deps).extracting(PluginDependency::getName).containsExactlyInAnyOrder("ProtocolLib", "ServerListPlus", "ProtocolSupport");
         assertThat(deps).extracting(PluginDependency::isRequired).containsOnly(false);
 
-        assertIterableEquals(Set.of("1.13"), data.getPlatformDependencies().get(Platform.PAPER));
+        assertIterableEquals(Set.of("1.13"), data.getPlatformDependencies().get(Platform.MINECRAFT));
     }
 
     @ParameterizedTest

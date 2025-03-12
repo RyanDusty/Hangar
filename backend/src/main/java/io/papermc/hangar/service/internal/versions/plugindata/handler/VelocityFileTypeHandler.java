@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class VelocityFileTypeHandler extends FileTypeHandler<VelocityFileData> {
 
     protected VelocityFileTypeHandler() {
-        super("velocity-plugin.json", Platform.VELOCITY);
+        super("velocity-plugin.json", Platform.PAPER);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class VelocityFileTypeHandler extends FileTypeHandler<VelocityFileData> {
 
         @Override
         protected @NotNull Set<PluginDependency> createPluginDependencies() {
-            return this.dependencies.stream().map(dependency -> PluginDependency.of(dependency.id, !dependency.optional, Platform.VELOCITY)).collect(Collectors.toSet());
+            return this.dependencies.stream().map(dependency -> PluginDependency.of(dependency.id, !dependency.optional, Platform.PAPER)).collect(Collectors.toSet());
         }
 
         @ConfigSerializable

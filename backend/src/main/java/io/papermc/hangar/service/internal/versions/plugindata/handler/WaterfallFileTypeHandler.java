@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class WaterfallFileTypeHandler extends FileTypeHandler<WaterfallFileData> {
 
     protected WaterfallFileTypeHandler() {
-        super("bungee.yml", Platform.WATERFALL);
+        super("bungee.yml", Platform.PROJECTKORRA);
     }
 
     @Override
@@ -40,12 +40,12 @@ public class WaterfallFileTypeHandler extends FileTypeHandler<WaterfallFileData>
             final Set<PluginDependency> dependencies = new HashSet<>();
             if (this.hardDepends != null) {
                 for (final String hardDepend : this.hardDepends) {
-                    dependencies.add(PluginDependency.of(hardDepend, true, Platform.WATERFALL));
+                    dependencies.add(PluginDependency.of(hardDepend, true, Platform.PROJECTKORRA));
                 }
             }
             if (this.softDepends != null) {
                 for (final String softDepend : this.softDepends) {
-                    dependencies.add(PluginDependency.of(softDepend, false, Platform.WATERFALL));
+                    dependencies.add(PluginDependency.of(softDepend, false, Platform.PROJECTKORRA));
                 }
             }
             return dependencies;
