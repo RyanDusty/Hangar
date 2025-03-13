@@ -17,12 +17,11 @@ public enum Category {
     OFFICIAL_PLUGINS(0, "mdi-shield-crown", "official_plugins", true),
     ABILITY(1, "mdi-paw", "ability"),
     SIDE_PLUGIN(2, "mdi-puzzle", "side_plugin"),
-    ABILITY_PLUGIN_PACK(3, "mdi-file-document-multiple", "ability_pack"),
-    DATA_PACK(4, "mdi-package-variant-closed", "data_pack"),
-    RESOURCE_PACK(5, "mdi-texture-box", "resource_pack"),
-    WORLD(6, "mdi-earth", "world"),
-    CONFIG(7, "mdi-cog", "config"),
-    OTHER(8, "mdi-help-box", "other"),
+    DATA_PACK(3, "mdi-package-variant-closed", "data_pack"),
+    RESOURCE_PACK(4, "mdi-texture-box", "resource_pack"),
+    WORLD(5, "mdi-earth", "world"),
+    CONFIG(6, "mdi-cog", "config"),
+    OTHER(7, "mdi-help-box", "other"),
     UNDEFINED(10, "", "undefined", false);
 
     public static final List<Category> VALID_CATEGORIES = Arrays.stream(values()).filter(c -> c != UNDEFINED).toList();

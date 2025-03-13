@@ -1,7 +1,7 @@
 {
-  "name": "Hangar by PaperMC",
-  "description": "Plugin repository for Paper, Velocity, Waterfall and Folia.",
-  "short_name": "Hangar",
+  "name": "ProjectKorra Downloads",
+  "description": "A repository for downloading ProjectKorra and all related resources.",
+  "short_name": "PK Downloads",
   "start_url": "/",
   "icons": [
     {

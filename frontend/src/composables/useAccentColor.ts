@@ -5,7 +5,7 @@ export function useAccentColor() {
   });
 
   if (!accentColor.value) {
-    accentColor.value = "blue";
+    accentColor.value = "red";
   }
 
   const themeClass = computed(() => {

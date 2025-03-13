@@ -62,9 +62,39 @@ async function togglePin() {
                   <template #content>
                     {{ i18n.t("project.settings.tags." + tag + ".tooltip") }}
                   </template>
-                  <IconMdiPuzzleOutline v-if="tag === Tag.ADDON" />
-                  <IconMdiBookshelf v-else-if="tag === Tag.LIBRARY" />
-                  <IconMdiLeaf v-else-if="tag === Tag.SUPPORTS_FOLIA" />
+                  <IconMdiPuzzleOutline v-if="tag === Tag.CUSTOM_ABILITY" />
+                <IconMdiFileDocumentMultiple v-else-if="tag === Tag.ABILITY_PACK" />
+                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" />
+                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" />
+                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" />
+                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" />
+                <IconMdiMonitor v-else-if="tag === Tag.GUI" />
+                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" />
+                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" />
+                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" />
+                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" />
+                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" />
+                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" />
+                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" />
+                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" />
+                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" />
+                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" />
+                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" />
+                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" />
+                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" />
+                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" />
+                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" />
+                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" />
+                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" />
+                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" />
+                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" />
+                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" />
+                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" />
+                <IconMdiPaw v-else-if="tag === Tag.MOBS" />
+                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" />
+                <IconMdiLibrary v-else-if="tag === Tag.LIBRARY" />
+                <IconMdiPuzzle v-else-if="tag === Tag.MISC" />
+
                 </Tooltip>
               </span>
             </div>

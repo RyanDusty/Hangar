@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 public class MailService extends HangarComponent {
 
     public enum MailType {
-        EMAIL_CHANGED("Hangar Email Changed", "email-changed.html"),
-        USERNAME_CHANGED("Hangar Username Changed", "username-changed.html"),
-        PASSWORD_CHANGED("Hangar Password Changed", "password-changed.html"),
-        PASSWORD_RESET("Hangar Password Reset", "password-reset.html"),
-        EMAIL_CONFIRMATION("Hangar Email Verification", "email-verification.html");
+        EMAIL_CHANGED("ProjectKorra Email Changed", "email-changed.html"),
+        USERNAME_CHANGED("ProjectKorra Username Changed", "username-changed.html"),
+        PASSWORD_CHANGED("ProjectKorra Password Changed", "password-changed.html"),
+        PASSWORD_RESET("ProjectKorra Password Reset", "password-reset.html"),
+        EMAIL_CONFIRMATION("ProjectKorra Email Verification", "email-verification.html");
 
         final String subject;
         final String text;

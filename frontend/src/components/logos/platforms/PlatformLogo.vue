@@ -13,6 +13,7 @@ withDefaults(
 </script>
 <template>
   <PaperLogo v-if="platform === Platform.PAPER" v-bind="$attrs" :width="size" :height="size" />
-  <VelocityLogo v-else-if="platform === Platform.VELOCITY" v-bind="$attrs" :width="size" :height="size" />
-  <WaterfallLogo v-else-if="platform === Platform.WATERFALL" v-bind="$attrs" :width="size" :height="size" />
+  <AssetLogo v-if="platform === Platform.ASSET" v-bind="$attrs" :width="size" :height="size" />
+  <MinecraftLogo v-else-if="platform === Platform.MINECRAFT" v-bind="$attrs" :width="size" :height="size" />
+  <ProjectKorraLogo v-else-if="platform === Platform.PROJECTKORRA" v-bind="$attrs" :width="size" :height="size" />
 </template>

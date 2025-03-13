@@ -12,7 +12,7 @@ const permissionResult = serverBackendData.permissions?.map(
     ({
       value,
       frontendName,
-      permission: BigInt("0b" + permission),
+      permission: BigInt("0b" + permission).toString(),
     }) as PermissionData
 );
 
@@ -49,6 +49,7 @@ function getRoleFromRoles(id: number, roles: RoleData[]): RoleData | undefined {
 
 // helpers
 export const useVisibleCategories = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible));
+export const useVisibleCategoriesPost = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible && value.apiName !== "official_plugins"));
 export const useVisiblePlatforms = computed(() => (useBackendData.platforms ? [...useBackendData.platforms.values()].filter((value) => value.visible) : []));
 
 export const useLicenseOptions = computed<Option<string>[]>(() => useBackendData.licenses.map<Option<string>>((l) => ({ value: l, text: l })));

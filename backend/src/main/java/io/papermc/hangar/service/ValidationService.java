@@ -14,7 +14,8 @@ public class ValidationService {
 
     private static final Set<String> BANNED_ROUTES = Set.of("actuator", "admin", "api", "api-docs", "authors", "guidelines", "linkout",
         "logged-out", "markdown", "new", "neworganization", "notifications", "null", "organizations", "privacy", "recommended", "settings",
-        "staff", "terms", "tools", "tos", "undefined", "unread", "version", "paper", "velocity", "waterfall", "spigot", "mojang", "minecraft", "auth", "_nuxt", "prism");
+        "staff", "terms", "tools", "tos", "undefined", "unread", "version", "official", "side-plugins", "abilities", "data-packs", "resource-packs", "worlds",
+        "configs", "misc", "ability-packs", "spigot", "mojang", "minecraft", "auth", "_nuxt", "prism");
     private final HangarConfig config;
 
     public ValidationService(final HangarConfig config) {

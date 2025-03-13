@@ -7,6 +7,7 @@ import io.papermc.hangar.config.hangar.HangarConfig;
 import io.papermc.hangar.db.customtypes.RoleCategory;
 import io.papermc.hangar.db.dao.internal.table.roles.RolesDAO;
 import io.papermc.hangar.model.Announcement;
+import io.papermc.hangar.model.api.project.settings.Tag;
 import io.papermc.hangar.model.common.Color;
 import io.papermc.hangar.model.common.NamedPermission;
 import io.papermc.hangar.model.common.Platform;
@@ -62,6 +63,15 @@ public class BackendDataController extends HangarComponent {
     }
 
     public record CategoryData(String icon, String apiName, boolean visible, String title) {
+    }
+
+    @GetMapping("/tags")
+    @Cacheable(CacheConfig.TAGS)
+    public List<TagData> getTags() {
+        return Arrays.stream(Tag.values()).map(tag -> new TagData(tag.name(), String.valueOf(tag.getParent()))).toList();
+    }
+
+    public record TagData(String name, String parent) {
     }
 
     @GetMapping("/permissions")

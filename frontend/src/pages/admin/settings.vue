@@ -17,9 +17,10 @@ const loading = ref<boolean>(false);
 useSeo(computed(() => ({ title: i18n.t("platformVersions.title"), route })));
 
 const fullVersions = ref<Record<Platform, string[]>>({
+  MINECRAFT: [],
+  PROJECTKORRA: [],
   PAPER: [],
-  WATERFALL: [],
-  VELOCITY: [],
+  ASSET: [],
 });
 resetPlatformVersions();
 

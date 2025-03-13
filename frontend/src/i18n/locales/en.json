@@ -58,12 +58,12 @@
       "categories": "Categories",
       "licenses": "Licenses",
       "versions": {
-        "MINECRAFT": "Minecraft/Spigot versions",
-        "PROJECTKORRA": "ProjectKorra versions",
-        "PAPER": "Paper Supported",
-        "ASSET": "Assets"
+        "MINECRAFT": "Minecraft/Spigot Versions",
+        "PROJECTKORRA": "ProjectKorra Versions",
+        "PAPER": "Paper Supported Resources",
+        "ASSET": "Asset Files Only"
       },
-      "platforms": "Platforms",
+      "platforms": "Platform Versions",
       "tags": "Tags"
     },
     "subtitle": "A Minecraft package repository",
@@ -321,20 +321,166 @@
       "keywordInvalid": "Keyword '{0}' is invalid",
       "tags": {
         "title": "Tags",
-        "SUPPORTS_FOLIA": {
-          "title": "Supports Folia",
-          "description": "Marks that this project is explicitly built against Folia, a multi-threaded fork of Paper",
-          "tooltip": "This project supports Folia"
+        
+        "CUSTOM_ABILITY": {
+          "title": "Custom Ability",
+          "description": "This project is a single custom bending ability that can be installed into the `/ProjectKorra/Abilities/` folder.",
+          "tooltip": "This project is a custom ability"
         },
-        "ADDON": {
-          "title": "Addon",
-          "description": "This project is an addon to another project, providing additional functionality",
-          "tooltip": "This project is an addon"
+        "ABILITY_PACK": {
+          "title": "Ability Pack",
+          "description": "This project includes a pack of multiple bending abilities. These can be across multiple elements and are installed into the `/plugins/` folder.",
+          "tooltip": "This project has multiple abilities"
+        },
+        "PASSIVE_ABILITY": {
+          "title": "Passive Ability",
+          "description": "This project features a passive ability that is always active.",
+          "tooltip": "This project has a passive ability"
+        },
+        "COMBO_ABILITY": {
+          "title": "Combo Ability",
+          "description": "This project includes a combo ability that requires a combination of moves.",
+          "tooltip": "This project has a combo ability"
+        },
+        "MULTI_ABILITY": {
+          "title": "Multi Ability",
+          "description": "This project features a multi ability that can perform different actions over multiple slots, such as WaterArms.",
+          "tooltip": "This project has a multi ability"
+        },
+        "CUSTOM_ELEMENT": {
+          "title": "Custom Element",
+          "description": "This project introduces a custom element that is not part of the standard elements.",
+          "tooltip": "This project features a custom element"
+        },
+        "GUI": {
+          "title": "Graphical User Interface",
+          "description": "This project includes a graphical user interface for easier interaction. This can be a chest menu, scoreboard, or other GUI.",
+          "tooltip": "This project features a GUI"
+        },
+        "ELEMENT_AVATAR": {
+          "title": "Avatar Element",
+          "description": "This project includes abilities related to the Avatar element.",
+          "tooltip": "This project contains an Avatar ability"
+        },
+        "ELEMENT_DARK_AVATAR": {
+          "title": "Dark Avatar Element",
+          "description": "This project includes abilities or features related to Dark Avatars",
+          "tooltip": "This project contains features for Dark Avatars"
+        },
+        "ELEMENT_FIRE": {
+          "title": "Fire Element",
+          "description": "This project includes abilities related to the Fire element.",
+          "tooltip": "This project contains a firebending ability"
+        },
+        "ELEMENT_COMBUSTION": {
+          "title": "Combustion",
+          "description": "This project includes abilities related to the Combustion subelement.",
+          "tooltip": "This project contains a combustion ability"
+        },
+        "ELEMENT_LIGHTNING": {
+          "title": "Lightning",
+          "description": "This project includes abilities related to the Lightning subelement.",
+          "tooltip": "This project contains a lightning ability"
+        },
+        "ELEMENT_WATER": {
+          "title": "Water Element",
+          "description": "This project includes abilities related to the Water element.",
+          "tooltip": "This project contains a waterbending ability"
+        },
+        "ELEMENT_ICE": {
+          "title": "Ice",
+          "description": "This project includes abilities related to the Ice subelement.",
+          "tooltip": "This project contains an icebending ability"
+        },
+        "ELEMENT_BLOOD": {
+          "title": "Blood",
+          "description": "This project includes abilities related to the Blood subelement.",
+          "tooltip": "This project contains a bloodbending ability"
+        },
+        "ELEMENT_PLANT": {
+          "title": "Plant",
+          "description": "This project includes abilities related to the Plant subelement.",
+          "tooltip": "This project contains a plantbending ability"
+        },
+        "ELEMENT_HEALING": {
+          "title": "Healing",
+          "description": "This project includes abilities related to the Healing subelement.",
+          "tooltip": "This project contains a healing ability"
+        },
+        "ELEMENT_EARTH": {
+          "title": "Earth Element",
+          "description": "This project includes abilities related to the Earth element.",
+          "tooltip": "This project contains an earthbending ability"
+        },
+        "ELEMENT_METAL": {
+          "title": "Metal",
+          "description": "This project includes abilities related to the Metal subelement.",
+          "tooltip": "This project contains a metalbending ability"
+        },
+        "ELEMENT_LAVA": {
+          "title": "Lava",
+          "description": "This project includes abilities related to the Lava subelement.",
+          "tooltip": "This project contains a lavabending ability"
+        },
+        "ELEMENT_SAND": {
+          "title": "Sand",
+          "description": "This project includes abilities related to the Sand subelement.",
+          "tooltip": "This project contains a sandbending ability"
+        },
+        "ELEMENT_AIR": {
+          "title": "Air Element",
+          "description": "This project includes abilities related to the Air element.",
+          "tooltip": "This project contains an airbending ability"
+        },
+        "ELEMENT_FLIGHT": {
+          "title": "Flight",
+          "description": "This project includes abilities related to the Flight subelement.",
+          "tooltip": "This project contains a flight ability"
+        },
+        "ELEMENT_SPIRITUAL": {
+          "title": "Spiritual Projection ",
+          "description": "This project includes abilities related to the Spiritual Projection element.",
+          "tooltip": "This project contains a spiritual projection ability"
+        },
+        "ELEMENT_CHI": {
+          "title": "Chi Element",
+          "description": "This project includes abilities related to the Chi element.",
+          "tooltip": "This project contains a chiblocking ability"
+        },
+        "ELEMENT_SPIRIT": {
+          "title": "Spirit Element",
+          "description": "This project includes abilities related to the Spirit custom element.",
+          "tooltip": "This project contains a spirits ability"
+        },
+        "ELEMENT_LIGHT_SPIRIT": {
+          "title": "Light Spirit Element",
+          "description": "This project includes abilities related to the Light Spirit custom element.",
+          "tooltip": "This project contains a light spirit ability"
+        },
+        "ELEMENT_DARK_SPIRIT": {
+          "title": "Dark Spirit Element",
+          "description": "This project includes abilities related to the Dark Spirit custom element.",
+          "tooltip": "This project contains a dark spirit ability"
+        },
+        "MOBS": {
+          "title": "Mobs",
+          "description": "This project interacts with mobs/creatures in some way",
+          "tooltip": "This project uses mobs somehow"
+        },
+        "WORLD": {
+          "title": "World",
+          "description": "This project interacts with the world in some way. Whether this be a custom world, or a world edit schematic, or even an ability that affects the world.",
+          "tooltip": "This project has something to do with the world"
         },
         "LIBRARY": {
           "title": "Library",
-          "description": "This project does not do anything on its own and is meant to be used/depended on by other projects",
+          "description": "This project is a library meant to be used by other projects.",
           "tooltip": "This project is a library"
+        },
+        "MISC": {
+          "title": "Miscellaneous",
+          "description": "This project features things that don't quite fit into the other tags.",
+          "tooltip": "This project is miscellaneous"
         }
       },
       "tagsSub": "Tags are used to further categorize your project for users.",
@@ -600,11 +746,11 @@
   },
   "channel": {
     "modal": {
-      "titleNew": "Add a new channel",
-      "titleEdit": "Edit channel",
-      "name": "Channel Name",
-      "description": "Channel Description",
-      "color": "Channel Color",
+      "titleNew": "Add a new release channel",
+      "titleEdit": "Edit release channel",
+      "name": "Release Channel Name",
+      "description": "Release Channel Description",
+      "color": "Release Channel Color",
       "pickedColor": "Picked channel color (must be unique)",
       "flags": {
         "unstable": "Versions are to be considered unstable",
@@ -624,9 +770,9 @@
         "invalidFlag": "You tried to set an invalid channel flag"
       },
       "success": {
-        "addedChannel": "Successfully added a new channel: {0}",
-        "editedChannel": "Successfully Edited channel: {0}",
-        "deletedChannel": "Successfully deleted channel: {0}"
+        "addedChannel": "Successfully added a new release channel: {0}",
+        "editedChannel": "Successfully Edited release channel: {0}",
+        "deletedChannel": "Successfully deleted release channel: {0}"
       }
     },
     "manage": {

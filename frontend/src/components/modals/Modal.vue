@@ -57,10 +57,12 @@ defineExpose({
     @close="close"
   >
     <div class="inline-flex items-center w-full pb-4 pr-1 text-xl">
-      <button data-close @click="close">
-        <IconMdiClose class="cursor-pointer mr-1" />
-      </button>
       <div class="font-bold">{{ props.title }}</div>
+      <div class="close">
+        <button data-close @click="close" >
+        <IconMdiClose class="cursor-pointer mr-1" />
+        </button>
+      </div>
     </div>
     <slot :on="{ click: close }" />
   </dialog>
@@ -70,5 +72,9 @@ defineExpose({
 <style lang="scss" scoped>
 dialog::backdrop {
   @apply bg-black opacity-60;
+}
+.close {
+  float: right;
+  margin-left: auto;
 }
 </style>
