@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Step } from "~/types/components/design/Steps";
-import { Category, type NewProjectForm, type ProjectSettingsForm, Tag } from "~/types/backend";
+import { Category, type NewProjectForm, type ProjectSettingsForm } from "~/types/backend";
 
 definePageMeta({
   loginRequired: true,
@@ -223,48 +223,19 @@ function createProject() {
         <hr />
       </div>
       <p class="mb-1">{{ i18n.t("project.new.step3.description2") }}</p>
-      <InputCheckbox v-for="tag in Object.values(Tag)" :key="tag" v-model="form.settings.tags" :value="tag">
-        <template #label>
-          <IconMdiPuzzleOutline v-if="tag === Tag.CUSTOM_ABILITY" />
-                <IconMdiFileDocumentMultiple v-else-if="tag === Tag.ABILITY_PACK" />
-                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" />
-                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" />
-                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" />
-                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" />
-                <IconMdiMonitor v-else-if="tag === Tag.GUI" />
-                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" />
-                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" />
-                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" />
-                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" />
-                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" />
-                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" />
-                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" />
-                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" />
-                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" />
-                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" />
-                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" />
-                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" />
-                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" />
-                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" />
-                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" />
-                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" />
-                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" />
-                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" />
-                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" />
-                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" />
-                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" />
-                <IconMdiPaw v-else-if="tag === Tag.MOBS" />
-                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" />
-                <IconMdiLibrary v-else-if="tag === Tag.LIBRARY" />
-                <IconMdiPuzzle v-else-if="tag === Tag.MISC" />
+      <InputTagCheckbox 
+            v-for="tag in useParentTags" 
+            :key="tag.name"
+            :value="tag.name" 
+            :tag="tag">
 
-          <span class="ml-1">{{ i18n.t("project.settings.tags." + tag + ".title") }}</span>
+            <template #label>
           <Tooltip>
             <template #content> {{ i18n.t("project.settings.tags." + tag + ".description") }} </template>
             <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
           </Tooltip>
         </template>
-      </InputCheckbox>
+            </InputTagCheckbox>
       <div class="text-lg mt-4 flex gap-2 items-center">
         <IconMdiCloudSearch />
         {{ i18n.t("project.new.step3.keywords") }}

@@ -2,7 +2,7 @@
 import { isAxiosError } from "axios";
 import type { Step } from "~/types/components/design/Steps";
 import type { ImportedProject, SpigotAuthor, SpigotResource } from "~/composables/useProjectImporter";
-import { Category, Tag } from "~/types/backend";
+import { Category } from "~/types/backend";
 
 definePageMeta({
   loginRequired: true,
@@ -131,7 +131,7 @@ function createProject(project: ImportedProject) {
     project.settings.license.name = undefined as unknown as string;
   }
   if (project.util.licenseUnset) {
-    project.settings.license.url = undefined;
+    project.settings.license.url = undefined as unknown as string;
   }
   useInternalApi<string>("projects/create", "post", project, { timeout: 10_000 })
     .then((u) => {
@@ -276,45 +276,20 @@ useSeo(computed(() => ({ title: t("importer.title"), route })));
                   {{ t("project.new.step3.tags") }}
                   <hr />
                 </div>
-                <InputCheckbox v-for="tag in Object.values(Tag)" :key="tag" v-model="project.settings.tags" :value="tag">
+                <InputTagCheckbox 
+                  v-for="tag in useParentTags" 
+                  :key="tag.name"
+                  v-model="project.settings.tags"
+                  :value="tag.name" 
+                  :tag="tag">
+
                   <template #label>
-                    <IconMdiPuzzleOutline v-if="tag === Tag.CUSTOM_ABILITY" />
-                <IconMdiFileDocumentMultiple v-else-if="tag === Tag.ABILITY_PACK" />
-                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" />
-                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" />
-                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" />
-                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" />
-                <IconMdiMonitor v-else-if="tag === Tag.GUI" />
-                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" />
-                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" />
-                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" />
-                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" />
-                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" />
-                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" />
-                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" />
-                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" />
-                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" />
-                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" />
-                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" />
-                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" />
-                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" />
-                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" />
-                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" />
-                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" />
-                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" />
-                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" />
-                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" />
-                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" />
-                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" />
-                <IconMdiPaw v-else-if="tag === Tag.MOBS" />
-                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" />
-                <IconMdiLibrary v-else-if="tag === Tag.LIBRARY" />
-                <IconMdiPuzzle v-else-if="tag === Tag.MISC" />
-
-                    <span class="ml-1">{{ t("project.settings.tags." + tag + ".title") }}</span>
+                    <Tooltip>
+                      <template #content> {{ t("project.settings.tags." + tag + ".description") }} </template>
+                      <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
+                    </Tooltip>
                   </template>
-                </InputCheckbox>
-
+                </InputTagCheckbox>
                 <div class="text-lg mt-6 flex gap-2 items-center">
                   <IconMdiLicense />
                   {{ t("project.new.step3.license") }}

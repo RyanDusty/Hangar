@@ -37,8 +37,10 @@ type NavBarLinks = { link: keyof RouteMap; label: string; icon?: any }[];
 const navBarLinks: NavBarLinks = [
   { link: "index", label: t("nav.indexTitle") },
   { link: "official_plugins", label: t("nav.officialPlugins") },
-  { link: "paper", label: t("nav.sidePlugins") },
-  { link: "paper", label: t("nav.abilities") },
+  { link: "side_plugins", label: t("nav.sidePlugins") },
+  { link: "abilities", label: t("nav.abilities") },
+  { link: "search", label: t("nav.search") },
+  
 ];
 
 const navBarMenuLinksHangar: NavBarLinks = [
@@ -127,7 +129,7 @@ function isRecent(date: string): boolean {
       <!-- Left side items -->
       <div class="flex items-center gap-4">
         <Popover v-slot="{ close, open }" class="relative">
-          <PopoverButton id="menu-button" aria-label="Menu" v-on="useTracking('nav-burger-button', { open })" class="flex">
+          <PopoverButton id="menu-button" aria-label="Menu" class="flex" v-on="useTracking('nav-burger-button', { open })">
             <icon-mdi-menu class="transition-transform text-[1.2em]" :class="open ? 'transform rotate-90' : ''" />
           </PopoverButton>
 
@@ -184,6 +186,7 @@ function isRecent(date: string): boolean {
           >
             {{ navBarLink.label }}
           </NuxtLink>
+          <a href="https://wiki.projectkorra.com" class="header-link">Wiki</a>
         </div>
       </div>
 

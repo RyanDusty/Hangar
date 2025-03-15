@@ -128,6 +128,7 @@ useSeo(
           Here you can find all downloads related to ProjectKorra! Including official plugins, side plugins, custom abilities, and more!
         </div>
       </template>
+      <slot name="announcement"></slot>
       <!-- Search Bar -->
       <div class="relative rounded-md flex shadow-md w-full max-w-screen-md">
         <!-- Text Input -->
@@ -195,7 +196,8 @@ useSeo(
         <ProjectList :projects="projects" :loading="!projects" :reset-anchor="pageChangeScrollAnchor" @update:page="(newPage) => (page = newPage)" />
       </div>
       <!-- Sidebar -->
-      <Card accent class="min-w-300px flex flex-col gap-4">
+       <div class="flex flex-col min-w-300px gap-4">
+        <Card accent class="min-w-300px flex flex-col gap-4">
         <h2 class="font-bold text-xl -mb-2">Filters</h2>
         <div v-if="!platform" class="platforms">
           <h3 class="font-bold mb-1">
@@ -257,6 +259,9 @@ useSeo(
           </div>
         </div>
       </Card>
+      <slot name="installation"></slot>
+       </div>
+      
     </Container>
     <!---<h2 class="text-2xl text-center font-bold mt-8">Frequently asked Questions about Hangar (FAQ)</h2>
     <div class="md:(ml-15 mr-15)">

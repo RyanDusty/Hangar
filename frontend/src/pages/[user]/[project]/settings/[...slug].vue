@@ -4,7 +4,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { Cropper, type CropperResult } from "vue-advanced-cropper";
 import type { Tab } from "~/types/components/design/Tabs";
 import InputText from "~/components/ui/InputText.vue";
-import { NamedPermission, Tag, Visibility } from "~/types/backend";
+import { NamedPermission, Visibility } from "~/types/backend";
 import type { HangarProject, HangarUser, PaginatedResultUser, ProjectSettings, Category } from "~/types/backend";
 
 import "vue-advanced-cropper/dist/style.css";
@@ -122,7 +122,7 @@ async function save() {
       form.settings.license.name = undefined as unknown as string;
     }
     if (form.settings && isUnspecifiedLicense.value) {
-      form.settings.license.url = undefined;
+      form.settings.license.url = undefined as unknown as string;
     }
 
     await useInternalApi(`projects/project/${route.params.project}/settings`, "post", {
@@ -282,48 +282,20 @@ useSeo(
           </ProjectSettingsSection>
           <ProjectSettingsSection title="project.settings.tags.title" description="project.settings.tagsSub">
             <template v-if="form.settings">
-              <InputCheckbox v-for="tag in Object.values(Tag)" :key="tag" v-model="form.settings.tags" :value="tag">
-                <template #label>
-                  <IconMdiPuzzleOutline v-if="tag === Tag.CUSTOM_ABILITY" />
-                <IconMdiFileDocumentMultiple v-else-if="tag === Tag.ABILITY_PACK" />
-                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" />
-                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" />
-                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" />
-                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" />
-                <IconMdiMonitor v-else-if="tag === Tag.GUI" />
-                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" />
-                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" />
-                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" />
-                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" />
-                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" />
-                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" />
-                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" />
-                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" />
-                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" />
-                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" />
-                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" />
-                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" />
-                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" />
-                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" />
-                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" />
-                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" />
-                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" />
-                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" />
-                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" />
-                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" />
-                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" />
-                <IconMdiPaw v-else-if="tag === Tag.MOBS" />
-                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" />
-                <IconMdiLibrary v-else-if="tag === Tag.LIBRARY" />
-                <IconMdiPuzzle v-else-if="tag === Tag.MISC" />
+              
+              <InputTagCheckbox 
+                v-for="tag in useParentTags" 
+                :key="tag.name"
+                :value="tag.name" 
+                :tag="tag">
 
-                  <span class="ml-1">{{ i18n.t("project.settings.tags." + tag + ".title") }}</span>
+                <template #label>
                   <Tooltip>
                     <template #content> {{ i18n.t("project.settings.tags." + tag + ".description") }} </template>
                     <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
                   </Tooltip>
                 </template>
-              </InputCheckbox>
+              </InputTagCheckbox>
             </template>
           </ProjectSettingsSection>
           <ProjectSettingsSection title="project.settings.license" description="project.settings.licenseSub">
