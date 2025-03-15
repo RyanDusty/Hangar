@@ -26,6 +26,8 @@ import io.papermc.hangar.service.internal.PlatformService;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.GitProperties;
 import org.springframework.cache.annotation.Cacheable;
@@ -68,10 +70,10 @@ public class BackendDataController extends HangarComponent {
     @GetMapping("/tags")
     @Cacheable(CacheConfig.TAGS)
     public List<TagData> getTags() {
-        return Arrays.stream(Tag.values()).map(tag -> new TagData(tag.name(), String.valueOf(tag.getParent()))).toList();
+        return Arrays.stream(Tag.values()).map(tag -> new TagData(tag.name(), tag.getParent(), tag.getChilden())).toList();
     }
 
-    public record TagData(String name, String parent) {
+    public record TagData(String name, Tag parent, Set<Tag> children) {
     }
 
     @GetMapping("/permissions")

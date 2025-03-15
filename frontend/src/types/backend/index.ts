@@ -2274,6 +2274,13 @@ export enum Tag {
   MISC = "MISC",
 }
 
+export interface TagData {
+  /** @uniqueItems true */
+  children: Tag[];
+  name: string;
+  parent: Tag;
+}
+
 export interface TotpForm {
   code: string;
   secret: string;
@@ -2899,17 +2906,17 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         /** Filters based on a project page */
         pageId?: string;
         /** Filters logs by a project namespace */
-        projectSlug?: string;
-        /** Filters logs by a project namespace */
         authorName?: string;
+        /** Filters logs by a project namespace */
+        projectSlug?: string;
         /** Filters by subject name, usually a user action where the subject name is the user the action is about, not the user that performed the action */
         subjectName?: string;
         /** The user whose action created the log entry */
         user?: string;
         /** Filters logs based on a version string and platform */
-        platform?: string;
-        /** Filters logs based on a version string and platform */
         versionString?: string;
+        /** Filters logs based on a version string and platform */
+        platform?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -3892,6 +3899,21 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     getSecurity: (params: RequestParams = {}) =>
       this.request<Security, any>({
         path: `/api/internal/data/security`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags backend-data-controller
+     * @name GetTags
+     * @request GET:/api/internal/data/tags
+     */
+    getTags: (params: RequestParams = {}) =>
+      this.request<TagData[], any>({
+        path: `/api/internal/data/tags`,
         method: "GET",
         format: "json",
         ...params,
@@ -6318,13 +6340,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         platform?: string;
         /** The author of the project */
         owner?: string;
+        /** The query to use when searching */
+        query?: string;
         /**
          * Deprecated: Use 'query' instead
          * @deprecated
          */
         q?: string;
-        /** The query to use when searching */
-        query?: string;
         /** A license to filter for */
         license?: string;
         /** A platform version to filter for */

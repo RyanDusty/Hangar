@@ -888,5 +888,187 @@
             "google",
             "microsoft"
         ]
-    }
+    },
+    "tags": [
+        {
+            "name": "CUSTOM_ABILITY",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "ABILITY_PACK",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "PASSIVE_ABILITY",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "COMBO_ABILITY",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "MULTI_ABILITY",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "CUSTOM_ELEMENT",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "GUI",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "ELEMENT_AVATAR",
+            "parent": null,
+            "children": [
+                "ELEMENT_DARK_AVATAR"
+            ]
+        },
+        {
+            "name": "ELEMENT_DARK_AVATAR",
+            "parent": "ELEMENT_AVATAR",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_FIRE",
+            "parent": null,
+            "children": [
+                "ELEMENT_LIGHTNING",
+                "ELEMENT_COMBUSTION"
+            ]
+        },
+        {
+            "name": "ELEMENT_COMBUSTION",
+            "parent": "ELEMENT_FIRE",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_LIGHTNING",
+            "parent": "ELEMENT_FIRE",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_WATER",
+            "parent": null,
+            "children": [
+                "ELEMENT_PLANT",
+                "ELEMENT_HEALING",
+                "ELEMENT_ICE",
+                "ELEMENT_BLOOD"
+            ]
+        },
+        {
+            "name": "ELEMENT_ICE",
+            "parent": "ELEMENT_WATER",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_PLANT",
+            "parent": "ELEMENT_WATER",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_BLOOD",
+            "parent": "ELEMENT_WATER",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_HEALING",
+            "parent": "ELEMENT_WATER",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_EARTH",
+            "parent": null,
+            "children": [
+                "ELEMENT_SAND",
+                "ELEMENT_METAL",
+                "ELEMENT_LAVA"
+            ]
+        },
+        {
+            "name": "ELEMENT_SAND",
+            "parent": "ELEMENT_EARTH",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_METAL",
+            "parent": "ELEMENT_EARTH",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_LAVA",
+            "parent": "ELEMENT_EARTH",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_AIR",
+            "parent": null,
+            "children": [
+                "ELEMENT_SPIRITUAL",
+                "ELEMENT_FLIGHT"
+            ]
+        },
+        {
+            "name": "ELEMENT_FLIGHT",
+            "parent": "ELEMENT_AIR",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_SPIRITUAL",
+            "parent": "ELEMENT_AIR",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_CHI",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "ELEMENT_SPIRIT",
+            "parent": null,
+            "children": [
+                "ELEMENT_LIGHT_SPIRIT",
+                "ELEMENT_DARK_SPIRIT"
+            ]
+        },
+        {
+            "name": "ELEMENT_LIGHT_SPIRIT",
+            "parent": "ELEMENT_SPIRIT",
+            "children": []
+        },
+        {
+            "name": "ELEMENT_DARK_SPIRIT",
+            "parent": "ELEMENT_SPIRIT",
+            "children": []
+        },
+        {
+            "name": "MOBS",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "WORLD",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "LIBRARY",
+            "parent": null,
+            "children": []
+        },
+        {
+            "name": "MISC",
+            "parent": null,
+            "children": []
+        }
+    ]
 }

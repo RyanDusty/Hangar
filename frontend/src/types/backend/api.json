@@ -305,7 +305,7 @@
           {
             "description": "Filters logs by a project namespace",
             "in": "query",
-            "name": "projectSlug",
+            "name": "authorName",
             "schema": {
               "type": "string"
             },
@@ -314,7 +314,7 @@
           {
             "description": "Filters logs by a project namespace",
             "in": "query",
-            "name": "authorName",
+            "name": "projectSlug",
             "schema": {
               "type": "string"
             },
@@ -341,7 +341,7 @@
           {
             "description": "Filters logs based on a version string and platform",
             "in": "query",
-            "name": "platform",
+            "name": "versionString",
             "schema": {
               "type": "string"
             },
@@ -350,7 +350,7 @@
           {
             "description": "Filters logs based on a version string and platform",
             "in": "query",
-            "name": "versionString",
+            "name": "platform",
             "schema": {
               "type": "string"
             },
@@ -2027,6 +2027,29 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Security"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "backend-data-controller"
+        ]
+      }
+    },
+    "/api/internal/data/tags": {
+      "get": {
+        "operationId": "getTags",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TagData"
+                  }
                 }
               }
             },
@@ -6851,19 +6874,19 @@
             "style": "form"
           },
           {
-            "deprecated": true,
-            "description": "Deprecated: Use 'query' instead",
+            "description": "The query to use when searching",
             "in": "query",
-            "name": "q",
+            "name": "query",
             "schema": {
               "type": "string"
             },
             "style": "form"
           },
           {
-            "description": "The query to use when searching",
+            "deprecated": true,
+            "description": "Deprecated: Use 'query' instead",
             "in": "query",
-            "name": "query",
+            "name": "q",
             "schema": {
               "type": "string"
             },
@@ -15534,6 +15557,29 @@
           "WORLD",
           "LIBRARY",
           "MISC"
+        ]
+      },
+      "TagData": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "uniqueItems": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/Tag"
+          }
+        },
+        "required": [
+          "name",
+          "parent",
+          "children"
         ]
       },
       "TotpForm": {

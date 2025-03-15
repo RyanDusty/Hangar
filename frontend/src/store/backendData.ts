@@ -52,6 +52,8 @@ export const useVisibleCategories = computed<CategoryData[]>(() => [...(useBacke
 export const useVisibleCategoriesPost = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible && value.apiName !== "official_plugins"));
 export const useVisiblePlatforms = computed(() => (useBackendData.platforms ? [...useBackendData.platforms.values()].filter((value) => value.visible) : []));
 
+export const useParentTags = computed(() => [...useBackendData.tags.values()].filter((value) => value.parent === null));
+
 export const useLicenseOptions = computed<Option<string>[]>(() => useBackendData.licenses.map<Option<string>>((l) => ({ value: l, text: l })));
 export const useCategoryOptions = computed<Option<string>[]>(() =>
   useVisibleCategories.value.map<Option<string>>((c) => ({ value: c.apiName, text: c.title }))

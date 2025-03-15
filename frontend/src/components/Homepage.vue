@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { Platform, Tag } from "~/types/backend";
-import type { PlatformVersion, Category } from "~/types/backend";
+import type { PlatformVersion, Category, Platform } from "~/types/backend";
+import { useParentTags } from "~/store/backendData";
 
 const props = defineProps<{
   platform?: Platform;
@@ -218,7 +218,7 @@ useSeo(
                   :value="visiblePlatform.enumName"
                   @update:model-value="updatePlatform"
                 >
-                  <PlatformLogo :platform="visiblePlatform.enumName" :size="24" class="mr-1" />
+                  <PlatformLogo :platform="visiblePlatform.enumName as Platform" :size="24" class="mr-1" />
                 </InputRadio>
               </li>
             </ul>
@@ -233,44 +233,13 @@ useSeo(
         <div class="tags">
           <h3 class="font-bold mb-1">{{ i18n.t("hangar.projectSearch.tags") }}</h3>
           <div class="flex flex-col gap-1">
-            <InputCheckbox v-for="tag in Object.values(Tag)" :key="tag" v-model="filters.tags" :value="tag">
-              <template #label>
-                <IconMdiPuzzleOutline v-if="tag === Tag.CUSTOM_ABILITY" />
-                <IconMdiFileDocumentMultiple v-else-if="tag === Tag.ABILITY_PACK" />
-                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" />
-                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" />
-                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" />
-                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" />
-                <IconMdiMonitor v-else-if="tag === Tag.GUI" />
-                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" />
-                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" />
-                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" />
-                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" />
-                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" />
-                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" />
-                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" />
-                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" />
-                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" />
-                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" />
-                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" />
-                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" />
-                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" />
-                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" />
-                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" />
-                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" />
-                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" />
-                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" />
-                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" />
-                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" />
-                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" />
-                <IconMdiPaw v-else-if="tag === Tag.MOBS" />
-                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" />
-                <IconMdiLibrary v-else-if="tag === Tag.LIBRARY" />
-                <IconMdiPuzzle v-else-if="tag === Tag.MISC" />
-
-                <span class="ml-1">{{ i18n.t("project.settings.tags." + tag + ".title") }}</span>
-              </template>
-            </InputCheckbox>
+            <InputTagCheckbox 
+            v-for="tag in useParentTags" 
+            :key="tag.name" 
+            v-model="filters.tags" 
+            :value="tag.name" 
+            :tag="tag">
+            </InputTagCheckbox>
           </div>
         </div>
         <div class="categories">

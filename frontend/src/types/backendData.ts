@@ -8,6 +8,8 @@ import type {
   Security,
   Validations,
   CategoryData,
+  Tag,
+  TagData,
   PermissionData,
   PlatformData,
   VisibilityData,
@@ -18,6 +20,7 @@ import type {
 
 export interface BackendData {
   projectCategories: Map<Category, CategoryData>;
+  tags: Map<Tag, TagData>;
   permissions: Map<NamedPermission, PermissionData>;
   platforms: Map<Platform, PlatformData>;
   validations: Validations;
@@ -36,6 +39,7 @@ export interface BackendData {
 
 export interface ServerBackendData {
   projectCategories: CategoryData[];
+  tags: TagData[];
   permissions: PermissionData[];
   platforms: PlatformData[];
   validations: Validations;

@@ -3,8 +3,10 @@ package io.papermc.hangar.model.api.project.settings;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import org.jdbi.v3.core.enums.EnumByOrdinal;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -52,12 +54,19 @@ public enum Tag {
 
     Tag(Tag parent) {
         this.parent = parent;
+        if (parent != null)
+            parent.childen.add(this);
     }
 
     private Tag parent;
+    private Set<Tag> childen = new HashSet<>(0);
 
     public Tag getParent() {
         return this.parent;
+    }
+
+    public Set<Tag> getChilden() {
+        return this.childen;
     }
 
     @Override
