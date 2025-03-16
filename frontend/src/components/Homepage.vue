@@ -120,9 +120,13 @@ useSeo(
 </script>
 
 <template>
-  <div>
+  <template v-if="index">
+    <FrontPage></FrontPage>
+  </template>
+  <template v-if="!index">
+    <div>
     <Container class="flex flex-col items-center gap-4">
-      <template v-if="index">
+      <template v-if="!index">
         <h1 class="text-4xl font-bold uppercase text-center mt-4 flex flex-col w-full">ProjectKorra Downloads</h1>
         <div class="text-1xl text-center mb-2">
           Here you can find all downloads related to ProjectKorra! Including official plugins, side plugins, custom abilities, and more!
@@ -291,6 +295,8 @@ useSeo(
       </Card>
     </div>--->
   </div>
+  </template>
+  
 </template>
 
 <style lang="scss" scoped>

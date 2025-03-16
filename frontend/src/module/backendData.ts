@@ -16,6 +16,7 @@ import type {
   ColorData,
   FlagReasonData,
   PromptData,
+  TagData,
 } from "~/types/backend";
 import type { ServerBackendData } from "~/types/backendData";
 
@@ -144,6 +145,7 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
     axiosInstance.get<FlagReasonData[]>("/flagReasons"),
     axiosInstance.get<string[]>("/loggedActions"),
     axiosInstance.get<Security>("/security"),
+    axiosInstance.get<TagData[]>("/tags"),
   ]);
   const [
     projectCategories,
@@ -161,6 +163,7 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
     flagReasons,
     loggedActions,
     security,
+    tags,
   ] = result.map((it) => it?.data || it);
 
   state.projectCategories = projectCategories as typeof state.projectCategories;
@@ -178,4 +181,5 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
   state.flagReasons = flagReasons as typeof state.flagReasons;
   state.loggedActions = loggedActions as typeof state.loggedActions;
   state.security = security as typeof state.security;
+  state.tags = tags as typeof state.tags;
 }

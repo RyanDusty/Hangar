@@ -80,9 +80,10 @@ public class SitemapService extends HangarComponent {
     private static SitemapGenerator addGlobal(SitemapGenerator generator) {
         generator
             .addPage(WebPage.builder().name("").changeFreqDaily().priority(1.0).build())
-            .addPage(WebPage.builder().name("paper").changeFreqDaily().priority(1.0).build())
-            .addPage(WebPage.builder().name("waterfall").changeFreqDaily().priority(1.0).build())
-            .addPage(WebPage.builder().name("velocity").changeFreqDaily().priority(1.0).build())
+            .addPage(WebPage.builder().name("side_plugins").changeFreqDaily().priority(1.0).build())
+            .addPage(WebPage.builder().name("official").changeFreqDaily().priority(1.0).build())
+            .addPage(WebPage.builder().name("abilities").changeFreqDaily().priority(1.0).build())
+            .addPage(WebPage.builder().name("search").changeFreqDaily().priority(1.0).build())
             .addPage(WebPage.builder().name("authors").changeFreqWeekly().priority(1.0).build())
             .addPage(WebPage.builder().name("staff").changeFreqWeekly().priority(1.0).build())
             .addPage(WebPage.builder().name("guidelines").changeFreqMonthly().priority(1.0).build())
