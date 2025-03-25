@@ -3,7 +3,7 @@
       <!-- Hero Section -->
       <div class="hero">
         <video class="hero-video" autoplay muted loop>
-          <source src="@/assets/hero.webm" type="video/webm" />
+          <source src="~/assets/hero.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
         <div class="hero-overlay">
@@ -15,32 +15,38 @@
       <!-- Content Section -->
       <div class="content">
         <!-- First Image-Text Pair -->
-        <div class="flex center mt-10 mb-10">
-          <img src="@/assets/image1.png" alt="Image 1" class="image w-45% h-auto ml-6 mr-6" />
+        <div class="flex center mt-25 mb-25">
+          <div class="w-45% h-auto ml-6 mr-6 center">
+            <img src="~/assets/img/aang.png" alt="Image 1" class="image w-350px h-350px center"  />
+          </div>
           <div class="text w-full ml-6 mr-6">
-            <h2 class="text-3xl font-bold w-full">Custom Abilities</h2>
-            <p class="text mt-4">Create and customize your own bending abilities to enhance your Minecraft experience.</p>
+            <h2 class="text-5xl font-bold w-full">Choose Your Element</h2>
+            <p class="text text-2xl mt-8">Choose between Fire, Water, Earth, Air and Chi! Each element has unique facets and abilities that makes them unique, while remaining balanced so no element is stronger than another.</p>
           </div>
         </div>
         <hr class="divider opacity-30" />
   
         <!-- Second Image-Text Pair -->
-        <div class="flex center flex-row-reverse mt-10 mb-10">
-        <img src="@/assets/image2.png" alt="Image 2" class="image w-45% h-auto ml-6 mr-6" />
+        <div class="flex center flex-row-reverse mt-25 mb-25">
+          <div class="w-45% h-auto ml-6 mr-6 center">
+            <img src="~/assets/img/katara.png" alt="Image 2" class="image  h-auto w-350px center" />
+          </div>
           <div class="text w-full ml-6 mr-6">
-            <h2 class="text-3xl font-bold w-full">Community Driven</h2>
-            <p class="text mt-4">Join a vibrant community of benders and share your creations with others.</p>
+            <h2 class="text-5xl font-bold w-full">Master Your Bending</h2>
+            <p class="text text-2xl mt-8">Learn to master your bending with the vast array of bending abilities! Learn to use them effectively in combat, combine your abilities to produce combos, and become the master of your element!</p>
           </div>
           
         </div>
         <hr class="divider opacity-30" />
   
         <!-- Third Image-Text Pair -->
-        <div class="flex center mt-10 mb-10">
-          <img src="@/assets/image3.png" alt="Image 3" class="image w-45% h-auto ml-6 mr-6" />
+        <div class="flex center mt-25 mb-25">
+          <div class="w-45% h-auto ml-6 mr-6">
+            <img src="~/assets/img/sokka.png" alt="Image 2" class="image w-auto h-350px center" />
+          </div>
           <div class="text w-full ml-6 mr-6">
-            <h2 class="text-3xl font-bold w-full">Endless Possibilities</h2>
-            <p class="text mt-4">Explore a world of endless possibilities with ProjectKorra's extensive features.</p>
+            <h2 class="text-5xl font-bold w-full">Your Server, Your Way</h2>
+            <p class="text text-2xl mt-8">With hundreds of configuration options, customize your bending server however you like! Install community made abilities, create an Avatar cycle, make bending abilities unlockable - ProjectKorra can be configured to whatever you need!</p>
           </div>
         </div>
       </div>
@@ -55,6 +61,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Quicksand";
   }
   
   .hero {
@@ -95,6 +102,20 @@
     margin: 0;
   }
 
+  .image {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
   
   /** .image {
     width: 50%;
