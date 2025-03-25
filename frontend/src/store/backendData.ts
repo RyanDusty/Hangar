@@ -1,6 +1,6 @@
 import backendData from "~/generated/backendData.json";
 import type { Option } from "~/types/components/ui/InputAutocomplete";
-import type { CategoryData, PermissionData, RoleData } from "~/types/backend";
+import { NamedPermission, type CategoryData, type PermissionData, type RoleData } from "~/types/backend";
 import type { BackendData, ServerBackendData } from "~/types/backendData";
 
 const serverBackendData = { ...backendData } as unknown as ServerBackendData;
@@ -49,7 +49,7 @@ function getRoleFromRoles(id: number, roles: RoleData[]): RoleData | undefined {
 
 // helpers
 export const useVisibleCategories = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible));
-export const useVisibleCategoriesPost = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible && value.apiName !== "official_plugins"));
+export const useVisibleCategoriesPost = computed<CategoryData[]>(() => [...(useBackendData.projectCategories?.values() || [])].filter((value) => value.visible && (value.apiName !== "official_plugins" || hasPerms(NamedPermission.IsStaff))));
 export const useVisiblePlatforms = computed(() => (useBackendData.platforms ? [...useBackendData.platforms.values()].filter((value) => value.visible) : []));
 
 export const useParentTags = computed(() => [...useBackendData.tags.values()].filter((value) => value.parent === null));
@@ -57,6 +57,9 @@ export const useParentTags = computed(() => [...useBackendData.tags.values()].fi
 export const useLicenseOptions = computed<Option<string>[]>(() => useBackendData.licenses.map<Option<string>>((l) => ({ value: l, text: l })));
 export const useCategoryOptions = computed<Option<string>[]>(() =>
   useVisibleCategories.value.map<Option<string>>((c) => ({ value: c.apiName, text: c.title }))
+);
+export const useCategoryOptionsPost = computed<Option<string>[]>(() =>
+  useVisibleCategoriesPost.value.map<Option<string>>((c) => ({ value: c.apiName, text: c.title }))
 );
 
 function convertToMap<E, T>(values: T[] = [], toStringFunc: (value: T) => string): Map<E, T> {

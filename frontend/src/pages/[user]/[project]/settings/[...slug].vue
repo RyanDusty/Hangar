@@ -259,7 +259,7 @@ useSeo(
       <Tabs v-model="selectedTab" :tabs="tabs">
         <template #general>
           <ProjectSettingsSection title="project.settings.category" description="project.settings.categorySub">
-            <InputSelect v-model="form.category" :values="useCategoryOptions" :rules="[required()]" i18n-text-values />
+            <InputSelect v-model="form.category" :values="useCategoryOptionsPost" :rules="[required()]" i18n-text-values />
           </ProjectSettingsSection>
           <ProjectSettingsSection title="project.settings.description" description="project.settings.descriptionSub">
             <InputText
@@ -286,15 +286,10 @@ useSeo(
               <InputTagCheckbox 
                 v-for="tag in useParentTags" 
                 :key="tag.name"
+                v-model="form.settings.tags"
                 :value="tag.name" 
+                :show-help="true"
                 :tag="tag">
-
-                <template #label>
-                  <Tooltip>
-                    <template #content> {{ i18n.t("project.settings.tags." + tag + ".description") }} </template>
-                    <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
-                  </Tooltip>
-                </template>
               </InputTagCheckbox>
             </template>
           </ProjectSettingsSection>

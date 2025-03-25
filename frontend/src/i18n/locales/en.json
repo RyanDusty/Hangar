@@ -231,8 +231,8 @@
     "new": {
       "step1": {
         "title": "User Agreement",
-        "text1": "A project contains your downloads and the documentation for your plugin.",
-        "text2": "Before continuing, please review the Hangar Submission Guideline.",
+        "text1": "A project contains information, downloads and documentation for your resource.",
+        "text2": "Before continuing, please review the ProjectKorra Submission Guideline.",
         "importer_text": "Want to import projects from other platforms? Check out the importer!",
         "continue": "Agree",
         "back": "Abort"
@@ -603,7 +603,7 @@
         "fileName": "File name",
         "fileSize": "File size",
         "externalUrl": "External URL",
-        "hangarProject": "Hangar Project",
+        "hangarProject": "Project",
         "linkOrProject": "Link or project",
         "channel": "Channel",
         "addChannel": "Create channel",
@@ -665,7 +665,7 @@
         "unknown": "An unknown error has occurred",
         "incomplete": "Plugin file missing {0}",
         "noDescription": "Must have a description",
-        "invalidPluginDependencyNamespace": "Plugin dependency {0} does not exist on Hangar",
+        "invalidPluginDependencyNamespace": "Plugin dependency {0} does not exist on this website",
         "invalidName": "Invalid version name",
         "channel": {
           "noName": "Must have a channel name specified",
@@ -794,7 +794,7 @@
   "organization": {
     "new": {
       "title": "Create a new Organization",
-      "text": "Organizations allow you to group users and provide closer collaboration between them within your projects on Hangar.",
+      "text": "Organizations allow you to group users and provide closer collaboration between them within your projects on ProjectKorra.",
       "name": "Organization Name",
       "error": {
         "duplicateName": "An organization/user with that name already exists",
@@ -1150,12 +1150,12 @@
         "header": "API keys"
       },
       "misc": {
-        "header": "Other",
+        "header": "Display",
         "accentColor": "Accent Color",
         "language": "Language",
         "alert": {
-          "colorAlert": "The accent colors are mostly untested and full of contrast issues, proceed with caution!",
-          "languageAlert": "Translations are experimental!"
+          "colorAlert": " ",
+          "languageAlert": "We only have english right now, but if you want to help us translate the website, please contact us on discord!"
         }
       }
     }
@@ -1169,7 +1169,7 @@
     "step1": {
       "title": "Intro",
       "text1": "This page allows you to import projects from other platforms. Right now only Spigot is supported.",
-      "text2": "Before continuing, please review the Hangar Submission Guideline.",
+      "text2": "Before continuing, please review the ProjectKorra Submission Guideline.",
       "continue": "Agree",
       "back": "Abort"
     },

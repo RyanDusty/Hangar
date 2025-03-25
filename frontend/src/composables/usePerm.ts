@@ -29,7 +29,7 @@ export function hasPerms(...namedPermission: NamedPermission[]): boolean {
       throw new Error(namedPermission + " is not valid");
     }
 
-    const val = BigInt("0b" + perm.permission.toString(2));
+    const val = BigInt(perm.permission);
     result = result && (_perms & val) === val;
   }
   return result;

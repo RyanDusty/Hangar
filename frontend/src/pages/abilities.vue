@@ -5,6 +5,14 @@ import { Category } from "~/types/backend";
 
 <template>
   <Homepage :category="Category.Ability" category-name="Abilities">
+    <template #announcement>
+      <div class="max-w-screen-md mx-auto">
+        <h1 class="text-4xl font-bold uppercase text-center mt-4 flex flex-col w-full">ProjectKorra Abilities</h1>
+        <div class="text-1xl text-center mb-2 mt-2">
+          Here you can find all singular abilities for ProjectKorra! These are custom abilities that can be added to your server to enhance your bending experience!
+        </div>
+      </div>
+    </template>
     <template #installation>
       <Card alternate-background class="min-w-300px max-w-300px flex flex-col gap-4">
         <h2 class="font-bold text-xl -mb-2">Installation</h2>

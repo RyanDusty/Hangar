@@ -11,10 +11,8 @@ import { Category } from "~/types/backend";
     <template #announcement>
       <div class="max-w-screen-md mx-auto">
         <h1 class="text-4xl font-bold uppercase text-center mt-4 flex flex-col w-full">Side Plugins</h1>
-        <div class="text-1xl text-center mb-2">
+        <div class="text-1xl text-center mb-2 mt-2">
           Here you can find all side plugins for ProjectKorra! These can be ability packs, new custom elements, or custom GUIs to use on your server!
-
-          All side plugins go inside the `/plugins/` folder!
         </div>
       </div>
     </template>

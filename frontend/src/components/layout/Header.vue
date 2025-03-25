@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 
 import type { RouteLocationRaw, RouteMap } from "vue-router";
-import hangarLogo from "~/assets/hangar-logo.svg";
+import projectkorraLogo from "~/assets/projectkorra-icon.png";
 
 import IconMdiHome from "~icons/mdi/home";
-import IconMdiDiscord from "~icons/mdi/discord";
 import IconMdiAccountGroup from "~icons/mdi/account-group";
-import IconMdiCodeBraces from "~icons/mdi/github";
-import IconMdiBookOpen from "~icons/mdi/book-open";
 import IconMdiFileDocumentAlert from "~icons/mdi/file-document-alert";
 import IconMdiAlertOutline from "~icons/mdi/alert-outline";
 import IconMdiInformationOutline from "~icons/mdi/information-outline";
@@ -44,7 +40,6 @@ const navBarLinks: NavBarLinks = [
   
 ];
 
-
 const navBarMenuLinksHangar: NavBarLinks = [
   { link: "index", label: t("general.home"), icon: IconMdiHome },
   { link: "guidelines", label: t("guidelines.title"), icon: IconMdiFileDocumentAlert },
@@ -59,13 +54,6 @@ if (!authStore.user) {
 
 const auth = useAuth;
 authLog("render with user " + authStore.user?.name);
-
-const navBarMenuLinksMoreFromPaper = [
-  { link: "https://projectkorra.com/", label: t("nav.hangar.home"), icon: IconMdiHome },
-  { link: "https://discord.gg/pPJe5p3", label: t("nav.hangar.discord"), icon: IconMdiDiscord },
-  { link: "https://github.com/ProjectKorra/", label: t("nav.hangar.code"), icon: IconMdiCodeBraces },
-  { link: "https://projectkorra.com/wiki/", label: t("nav.hangar.docs"), icon: IconMdiBookOpen },
-];
 
 function markNotificationsRead() {
   for (const notification of notifications.value) {
@@ -142,7 +130,7 @@ function isRecent(date: string): boolean {
         </button>
 
         <NuxtLink to="/" class="flex-shrink-0" v-on="useTracking('nav-logo')">
-          <img alt="ProjectKorra Logo" :src="hangarLogo" height="34" width="32" />
+          <img alt="ProjectKorra Logo" :src="projectkorraLogo" height="34" width="32" />
         </NuxtLink>
 
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
@@ -158,7 +146,7 @@ function isRecent(date: string): boolean {
               </NuxtLink>
             </li>
             <li class="nav-item">
-              <a href="https://wiki.projectkorra.com" class="header-link">Wiki</a>
+              <a href="https://wiki.projectkorra.com" class="header-link relative" after="absolute content-empty block w-0 top-30px left-1/10 h-4px rounded-8px">Wiki</a>
             </li>
 
           </ul>

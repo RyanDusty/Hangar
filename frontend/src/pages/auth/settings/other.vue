@@ -44,10 +44,10 @@ watch(locale, async (newLocale) => {
 <template>
   <div>
     <PageTitle>{{ i18n.t("auth.settings.misc.header") }}</PageTitle>
-    <Alert type="warning" class="mb-4">{{ i18n.t("auth.settings.misc.alert.colorAlert") }}</Alert>
+    <!--<Alert type="warning" class="mb-4">{{ i18n.t("auth.settings.misc.alert.colorAlert") }}</Alert>-->
     <InputSelect v-model="accentColor" :values="accentColors" :label="i18n.t('auth.settings.misc.accentColor')" />
 
-    <Alert type="warning" class="my-4">{{ i18n.t("auth.settings.misc.alert.languageAlert") }}</Alert>
+    <Alert type="neutral" class="my-4">{{ i18n.t("auth.settings.misc.alert.languageAlert") }}</Alert>
     <InputSelect v-model="locale" :values="languages" :label="i18n.t('auth.settings.misc.language')" />
   </div>
 </template>

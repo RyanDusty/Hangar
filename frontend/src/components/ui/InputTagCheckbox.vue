@@ -18,6 +18,7 @@ const props = defineProps<{
   disabled?: boolean;
   value?: string;
   tag: TagData;
+  showHelp?: boolean
 }>();
 
 const showChildren = ref(false);
@@ -81,6 +82,11 @@ const { v } = useValidation(props.label, undefined, internalVal);
       <IconMdiPuzzle v-else-if="tag.name === Tag.MISC" />
 
       <span class="ml-1">{{ i18n.t("project.settings.tags." + tag.name + ".title") }}</span>
+
+      <Tooltip v-if="showHelp">
+            <template #content> {{ i18n.t("project.settings.tags." + tag.name + ".description") }} </template>
+            <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
+      </Tooltip>
     </slot>
     <template v-if="hasChildren">
         <button type="button" class="ml-2" @click.stop="toggleChildren" @blur="{}">

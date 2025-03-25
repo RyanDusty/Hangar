@@ -27,7 +27,7 @@ export default defineNuxtModule({
     configKey: "backendData",
   },
   defaults: {
-    serverUrl: "https://hangar.papermc.dev",
+    serverUrl: "https://0.0.0.0",
     path: "./src/generated/backendData.json",
     ttl: 30 * 60 * 1000, // 30 min
     version: 1,
@@ -49,7 +49,7 @@ export default defineNuxtModule({
   },
 });
 
-async function generateBackendData(state: ServerBackendData, path: string, retry = true) {
+async function generateBackendData(state: ServerBackendData, path: string, retry = false) {
   const axiosInstance = prepareAxios(state.meta.apiUrl);
 
   try {
@@ -75,7 +75,7 @@ async function generateBackendData(state: ServerBackendData, path: string, retry
     }
     if (retry) {
       backendDataLog("Try running against production...");
-      state.meta.apiUrl = "https://hangar.papermc.io";
+      state.meta.apiUrl = "https://projectkorra.com";
       await generateBackendData(state, path, false);
     } else {
       await fs.writeFile(path, JSON.stringify({}));

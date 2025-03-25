@@ -115,16 +115,6 @@ function createProject() {
   <Steps v-model="selectedStep" :steps="steps" button-lang-key="project.new.step" tracking-name="new-project">
     <template #tos>
       <div class="flex-col flex inline-flex">
-        <Alert class="mb-4">
-          <template #icon="{ clazz }">
-            <IconMdiFolderPlusOutline :class="clazz" />
-          </template>
-          <Link to="/tools/importer">
-            <span class="text-white font-normal">
-              {{ i18n.t("project.new.step1.importer_text") }}
-            </span>
-          </Link>
-        </Alert>
         <p>{{ i18n.t("project.new.step1.text1") }}</p>
         <p class="inline-flex items-center space-x-2 mb-2">
           <IconMdiFileDocumentAlert />
@@ -176,7 +166,7 @@ function createProject() {
         <div class="basis-full md:basis-4/12 mt-4">
           <InputSelect
             v-model="form.category"
-            :values="useCategoryOptions"
+            :values="useCategoryOptionsPost"
             :label="i18n.t('project.new.step2.projectCategory')"
             :rules="[required()]"
             name="category"
@@ -227,15 +217,13 @@ function createProject() {
             v-for="tag in useParentTags" 
             :key="tag.name"
             :value="tag.name" 
+            :show-help="true"
             :tag="tag">
 
-            <template #label>
-          <Tooltip>
-            <template #content> {{ i18n.t("project.settings.tags." + tag + ".description") }} </template>
-            <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
-          </Tooltip>
-        </template>
-            </InputTagCheckbox>
+            
+      
+        
+      </InputTagCheckbox>
       <div class="text-lg mt-4 flex gap-2 items-center">
         <IconMdiCloudSearch />
         {{ i18n.t("project.new.step3.keywords") }}
