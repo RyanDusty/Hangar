@@ -19,6 +19,7 @@ import IconMdiFolderPlusOutline from "~icons/mdi/folder-plus-outline";
 import { type HangarNotification, type HangarUser, NamedPermission } from "~/types/backend";
 import { useUnreadNotificationCount } from "~/composables/useData";
 
+
 // @ts-expect-error marker so that you can inspect backend data in dev tools
 const backendData = useBackendData;
 
@@ -42,6 +43,7 @@ const navBarLinks: NavBarLinks = [
   { link: "search", label: t("nav.search") },
   
 ];
+
 
 const navBarMenuLinksHangar: NavBarLinks = [
   { link: "index", label: t("general.home"), icon: IconMdiHome },
@@ -113,6 +115,13 @@ function updateNotifications() {
     });
 }
 
+function toggleVisibility(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.toggle("show");
+  }
+}
+
 function isRecent(date: string): boolean {
   const now: Date = new Date();
   return now.getTime() - new Date(date).getTime() < 60 * 60 * 24 * 1000 * 7;
@@ -127,68 +136,34 @@ function isRecent(date: string): boolean {
 
     <nav class="max-w-screen-xl mx-auto flex flex-wrap justify-end px-4 py-2 gap-3">
       <!-- Left side items -->
-      <div class="flex items-center gap-4">
-        <Popover v-slot="{ close, open }" class="relative">
-          <PopoverButton id="menu-button" aria-label="Menu" class="flex" v-on="useTracking('nav-burger-button', { open })">
-            <icon-mdi-menu class="transition-transform text-[1.2em]" :class="open ? 'transform rotate-90' : ''" />
-          </PopoverButton>
+      <div class="flex items-center gap-4 navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" @click="toggleVisibility('navbarSupportedContent')">
+          <IconMdiMenu class="navbar-toggler-icon"></IconMdiMenu>
+        </button>
 
-          <!-- todo: Use Popper -->
-          <PopoverPanel
-            class="absolute top-10 z-10 w-max lt-sm:w-90vw background-default left-1/20 filter shadow-default rounded-r-md rounded-bl-md border-top-primary text-sm p-[20px]"
-          >
-            <p class="text-base font-semibold color-primary mb-3">Create</p>
-            <div class="grid grid-cols-2">
-              <NuxtLink
-                v-for="link in navBarMenuLinksHangar"
-                :key="link.label"
-                :to="{ name: link.link } as RouteLocationRaw"
-                class="flex items-center rounded-md px-6 py-2"
-                hover="text-primary-500 bg-primary-0"
-                v-on="useTracking('nav-burger-link', { link: link.link })"
-                @click="close()"
-              >
-                <component :is="link.icon" class="mr-3 text-[1.2em]" />
-                {{ link.label }}
-              </NuxtLink>
-            </div>
-
-            <p class="text-base font-semibold color-primary mb-3 mt-6">{{ t("nav.hangar.moreFrom") }}</p>
-            <div class="grid grid-cols-2">
-              <a
-                v-for="link in navBarMenuLinksMoreFromPaper"
-                :key="link.label"
-                class="flex items-center rounded-md px-6 py-2 hover:(text-primary-500 bg-primary-0)"
-                :href="link.link"
-                v-on="useTracking('nav-burger-link', { link: link.link })"
-              >
-                <component :is="link.icon" class="mr-3 text-[1.2em]" />
-                {{ link.label }}
-              </a>
-            </div>
-          </PopoverPanel>
-        </Popover>
-
-        <!-- Site logo -->
         <NuxtLink to="/" class="flex-shrink-0" v-on="useTracking('nav-logo')">
-          <img alt="Hangar Logo" :src="hangarLogo" height="34" width="32" />
+          <img alt="ProjectKorra Logo" :src="hangarLogo" height="34" width="32" />
         </NuxtLink>
 
-        <!-- Desktop links -->
-        <div class="gap-4 hidden sm:flex sm:items-center">
-          <NuxtLink
-            v-for="navBarLink in navBarLinks"
-            :key="navBarLink.label"
-            :to="{ name: navBarLink.link } as RouteLocationRaw"
-            class="header-link relative"
-            after="absolute content-empty block w-0 top-30px left-1/10 h-4px rounded-8px"
-            v-on="useTracking('nav-desktop-link', { link: navBarLink.link })"
-          >
-            {{ navBarLink.label }}
-          </NuxtLink>
-          <a href="https://wiki.projectkorra.com" class="header-link">Wiki</a>
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto gap-4 hidden sm:flex sm:items-center">
+            <li v-for="navBarLink in navBarLinks" :key="navBarLink.label" class="nav-item">
+              <NuxtLink
+                :to="{ name: navBarLink.link } as RouteLocationRaw"
+                class="header-link relative"
+                after="absolute content-empty block w-0 top-30px left-1/10 h-4px rounded-8px"
+                v-on="useTracking('nav-desktop-link', { link: navBarLink.link })"
+              >
+                {{ navBarLink.label }}
+              </NuxtLink>
+            </li>
+            <li class="nav-item">
+              <a href="https://wiki.projectkorra.com" class="header-link">Wiki</a>
+            </li>
+
+          </ul>
         </div>
-      </div>
+      </div> 
 
       <!-- Gap between the sides -->
       <div class="flex-grow-1" />
@@ -334,7 +309,7 @@ function isRecent(date: string): boolean {
 
         <!-- Login/register buttons -->
         <div v-else class="flex gap-2">
-          <NuxtLink
+          <div class="flex"><NuxtLink
             class="flex items-center rounded-md p-2 hover:(text-primary-500 bg-primary-0 dark:(text-white bg-zinc-700))"
             :to="auth.loginUrl(route.fullPath)"
             rel="nofollow"
@@ -348,8 +323,10 @@ function isRecent(date: string): boolean {
           >
             <icon-mdi-clipboard-outline class="mr-1 flex-shrink-0 text-[1.2em]" />
             {{ t("nav.signup") }}
-          </NuxtLink>
+          </NuxtLink></div>
+          <div class="flex-grow"></div>
         </div>
+        
       </div>
     </nav>
   </header>
@@ -361,16 +338,106 @@ nav .router-link-active {
   font-weight: 700;
 }
 
-.header-link.router-link-active:after {
-  content: "";
-  background: linear-gradient(-270deg, var(--primary-500) 0%, var(--primary-400) 100%);
-  transition: width 0.2s ease-in;
-  width: 80%;
+@media (min-width: 992px) {
+  .header-link.router-link-active:after {
+    content: "";
+    background: linear-gradient(-270deg, var(--primary-500) 0%, var(--primary-400) 100%);
+    transition: width 0.2s ease-in;
+    width: 80%;
+  }
+
+  .header-link:not(.router-link-active):hover:after {
+    background: #d3e1f6;
+    transition: width 0.2s ease-in;
+    width: 80%;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.header-link:not(.router-link-active):hover:after {
-  background: #d3e1f6;
-  transition: width 0.2s ease-in;
-  width: 80%;
+.navbar-toggler {
+  padding: .25rem 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.navbar-collapse {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: start;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.navbar-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  align-items: start;
+}
+
+.navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: left;
+  padding: .5rem 1rem;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
 }
 </style>

@@ -30,7 +30,9 @@ useHead({
   bodyAttrs: {
     class: "background-body text-[#262626] dark:text-[#E0E6f0]",
   },
-  meta: [{ name: "robots", content: runtimeConfig.public.allowIndexing === "false" ? "noindex,nofollow" : "index,follow" }],
+  meta: [{ name: "robots", content: runtimeConfig.public.allowIndexing === "false" ? "noindex,nofollow" : "index,follow" },
+    { name: "viewport", content: "width=device-width, initial-scale=1.0"}
+  ],
   script: [
     runtimeConfig.public.umamiWebsiteId && {
       src: "https://trk.papermc.io/api/init",
