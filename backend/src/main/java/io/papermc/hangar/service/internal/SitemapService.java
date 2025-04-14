@@ -87,10 +87,7 @@ public class SitemapService extends HangarComponent {
             .addPage(WebPage.builder().name("authors").changeFreqWeekly().priority(1.0).build())
             .addPage(WebPage.builder().name("staff").changeFreqWeekly().priority(1.0).build())
             .addPage(WebPage.builder().name("guidelines").changeFreqMonthly().priority(1.0).build())
-            .addPage(WebPage.builder().name("terms").changeFreqMonthly().priority(1.0).build())
-            .addPage(WebPage.builder().name("privacy").changeFreqMonthly().priority(1.0).build())
-            .addPage(WebPage.builder().name("version").changeFreqWeekly().priority(1.0).build())
-            .addPage(WebPage.builder().name("api-docs").changeFreqMonthly().priority(1.0).build());
+            .addPage(WebPage.builder().name("terms").changeFreqMonthly().priority(1.0).build());
         return generator;
     }
 

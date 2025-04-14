@@ -135,7 +135,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "bun",
-    compressPublicAssets: true,
+    compressPublicAssets: false,
     timing: false,
   },
   sourcemap: {
