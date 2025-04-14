@@ -54,6 +54,7 @@ export enum Category {
   Config = "config",
   Other = "other",
   Undefined = "undefined",
+  ServerList = "server_list",
 }
 
 export interface CategoryData {

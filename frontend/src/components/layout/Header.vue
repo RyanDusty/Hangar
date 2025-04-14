@@ -37,7 +37,7 @@ const navBarLinks: NavBarLinks = [
   { link: "side_plugins", label: t("nav.sidePlugins") },
   { link: "abilities", label: t("nav.abilities") },
   { link: "search", label: t("nav.search") },
-  
+  { link: "server_list", label: t("nav.serverList") },
 ];
 
 const navBarMenuLinksHangar: NavBarLinks = [

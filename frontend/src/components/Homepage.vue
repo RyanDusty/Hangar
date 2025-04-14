@@ -7,6 +7,7 @@ const props = defineProps<{
   platform?: Platform;
   platformName?: string;
   index?: boolean;
+  server_list?: boolean;
 }>();
 
 const i18n = useI18n();
@@ -123,7 +124,10 @@ useSeo(
   <template v-if="index">
     <FrontPage></FrontPage>
   </template>
-  <template v-if="!index">
+  <template v-else-if="server_list">
+  <!--server_list.vue-->
+  </template>
+  <template v-else>
     <div>
     <Container class="flex flex-col items-center gap-4">
       <slot name="announcement"></slot>
