@@ -7,20 +7,20 @@ public class ProjectServer {
 
     public static ProjectServer EMPTY = new ProjectServer(null, "null", 0, 0, "null", "null", "null", null, "null", "null", 0, 0, null, null  );
 
-    private final UUID id;
-    private final String name;
-    private final int ip;
-    private final int port;
-    private final String description;
-    private final String bannerImage;
-    private final String logoImage;
-    private final List<String> serverTags;
-    private final String websiteUrl;
-    private final String discordUrl;
-    private final int minecraftVersion;
-    private final int playerCount;
-    private final UUID ownerId;
-    private final Boolean status;
+    private UUID id;
+    private String name;
+    private int ip;
+    private int port;
+    private String description;
+    private String bannerImage;
+    private String logoImage;
+    private List<String> serverTags;
+    private String websiteUrl;
+    private String discordUrl;
+    private int minecraftVersion;
+    private int playerCount;
+    private UUID ownerId;
+    private Boolean status;
 
     public ProjectServer(UUID id, String name, int ip, int port, String description,String bannerImage, String logoImage, List<String> serverTags, String websiteUrl, String discordUrl, int minecraftVersion, int playerCount, UUID ownerId, Boolean status) {
         this.id = id;
@@ -39,6 +39,7 @@ public class ProjectServer {
         this.status = status;
 
     }
+    // Return values
     public UUID getServerId() { return this.id; }
     public String getServerName() { return this.name; }
     public int getServerIp() { return this.ip; }
@@ -53,6 +54,22 @@ public class ProjectServer {
     public int getServerPlayerCount() { return this.playerCount; }
     public UUID getServerOwnerId() { return this.ownerId; }
     public Boolean getServerStatus() { return this.status; }
+    // Set values (idk if I need this, it wasn't in any other file but I use this all the time)
+    public void setServerId(UUID id) { this.id = id; }
+    public void setServerName(String name) { this.name = name; }
+    public void setServerIp(int ip) { this.ip = ip; }
+    public void setServerPort(int port) { this.port = port; }
+    public void setServerDescription(String description) { this.description = description; }
+    public void setServerBannerImage(String bannerImage) { this.bannerImage = bannerImage; }
+    public void setServerLogoImage(String logoImage) { this.logoImage = logoImage; }
+    public void setServerTags(List<String> serverTags) { this.serverTags = serverTags; }
+    public void setServerWebsiteUrl(String websiteUrl) { this.websiteUrl = websiteUrl; }
+    public void setServerDiscordUrl(String discordUrl) { this.discordUrl = discordUrl; }
+    public void setServerMinecraftVersion(int minecraftVersion) { this.minecraftVersion = minecraftVersion; }
+    public void setServerPlayerCount(int playerCount) { this.playerCount = playerCount; }
+    public void setServerOwnerId(UUID ownerId) { this.ownerId = ownerId; }
+    public void setServerStatus(Boolean status) { this.status = status; }
+    // I saw this in another file so I put it in here just in case
 
     @Override
     public String toString() {
