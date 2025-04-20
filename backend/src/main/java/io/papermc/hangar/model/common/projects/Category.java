@@ -22,8 +22,8 @@ public enum Category {
     WORLD(5, "mdi-earth", "world"),
     CONFIG(6, "mdi-cog", "config"),
     OTHER(7, "mdi-help-box", "other"),
-    UNDEFINED(10, "", "undefined", false),
-    SERVER_LIST(11, "", "server_list", true);
+    UNDEFINED(10, "", "undefined", false);
+
 
     public static final List<Category> VALID_CATEGORIES = Arrays.stream(values()).filter(c -> c != UNDEFINED).toList();
 

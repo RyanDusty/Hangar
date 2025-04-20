@@ -40,7 +40,7 @@
         <hr class="divider opacity-30" />
   
         <!-- Third Image-Text Pair -->
-        <div class="flex center mt-25 mb-25">
+         <div class="flex center mt-25 mb-25">
           <div class="w-45% h-auto ml-6 mr-6">
             <img src="~/assets/img/sokka.png" alt="Image 2" class="image w-auto h-350px center" />
           </div>
