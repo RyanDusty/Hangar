@@ -1,11 +1,11 @@
-package io.papermc.hangar.model.db.projects;
+package io.papermc.hangar.model.db;
 
 import java.util.List;
 import java.util.UUID;
 
-public class ProjectServer {
+public class ServerTable extends Table {
 
-    public static ProjectServer EMPTY = new ProjectServer(null, "null", 0, 0, "null", "null", "null", null, "null", "null", 0, 0, null, null  );
+    public static ServerTable EMPTY = new ServerTable(null, "null", 0, 0, "null", "null", "null", null, "null", "null", 0, 0, null, null  );
 
     private UUID id;
     private String name;
@@ -22,7 +22,7 @@ public class ProjectServer {
     private UUID ownerId;
     private Boolean status;
 
-    public ProjectServer(UUID id, String name, int ip, int port, String description,String bannerImage, String logoImage, List<String> serverTags, String websiteUrl, String discordUrl, int minecraftVersion, int playerCount, UUID ownerId, Boolean status) {
+    public ServerTable(UUID id, String name, int ip, int port, String description, String bannerImage, String logoImage, List<String> serverTags, String websiteUrl, String discordUrl, int minecraftVersion, int playerCount, UUID ownerId, Boolean status) {
         this.id = id;
         this.name = name;
         this.ip = ip;
@@ -54,7 +54,7 @@ public class ProjectServer {
     public int getServerPlayerCount() { return this.playerCount; }
     public UUID getServerOwnerId() { return this.ownerId; }
     public Boolean getServerStatus() { return this.status; }
-    // Set values (idk if I need this, it wasn't in any other file but I use this all the time)
+    // Set values (idk if I need this, it wasn't in any other file but I use this all the time when making mc plugins so fuck it)
     public void setServerId(UUID id) { this.id = id; }
     public void setServerName(String name) { this.name = name; }
     public void setServerIp(int ip) { this.ip = ip; }
