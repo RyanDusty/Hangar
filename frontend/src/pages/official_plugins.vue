@@ -21,7 +21,7 @@ import { Category } from "~/types/backend";
         </p>
         <p>
           Remember to restart your server after installation!
-        </p>
+        </p>  
       </Card>
     </template>
   </Homepage>
