@@ -1,15 +1,15 @@
 package io.papermc.hangar.model.db;
 
+import org.jdbi.v3.core.mapper.reflect.JdbiConstructor;
 import java.sql.Timestamp;
-import java.util.UUID;
 
 public class ServerVerification extends Table {
 
-    public static ServerVerification EMPTY = new ServerVerification(null, null, null, null, "null", null, null   );
+    public static ServerVerification EMPTY = new ServerVerification(0, 0, 0, null, "null", null, null   );
 
-    private UUID id;
-    private UUID serverId;
-    private UUID reviewerId;
+    private long id;
+    private long serverId;
+    private long reviewerId;
     public Status status;
     private String notes;
     private Timestamp createdAt;
@@ -21,8 +21,8 @@ public class ServerVerification extends Table {
         REJECTED
     }
 
-
-    public ServerVerification(UUID id, UUID serverId, UUID reviewerId, Status status, String notes, Timestamp createdAt, Timestamp updatedAt ) {
+    @JdbiConstructor
+    public ServerVerification(long id, long serverId, long reviewerId, Status status, String notes, Timestamp createdAt, Timestamp updatedAt ) {
         this.id = id;
         this.serverId = serverId;
         this.reviewerId = reviewerId;
@@ -34,18 +34,17 @@ public class ServerVerification extends Table {
 
     }
     // GET METHODS
-    public UUID getServerId() { return this.id; }
-    public UUID getVerificationId() { return this.serverId; }
-    public UUID getReviewerId() { return this.reviewerId; }
+    public long getServerId() { return this.id; }
+    public long getVerificationId() { return this.serverId; }
+    public long getReviewerId() { return this.reviewerId; }
     public Status getVerificationStatus() { return this.status; }
     public String getServerNotes() { return this.notes; }
     public Timestamp getServerCreatedAt() { return this.createdAt; }
     public Timestamp getServerUpdatedAt() { return this.updatedAt; }
     // SET METHODS
-    // Setters mirroring your getter naming convention
-    public void setVerificationId(UUID id) { this.id = id; }
-    public void setServerId(UUID serverId) { this.serverId = serverId; }
-    public void setReviewerId(UUID reviewerId) { this.reviewerId = reviewerId; }
+    public void setVerificationId(long id) { this.id = id; }
+    public void setServerId(long serverId) { this.serverId = serverId; }
+    public void setReviewerId(long reviewerId) { this.reviewerId = reviewerId; }
     public void setVerificationStatus(Status status) { this.status = status; }
     public void setServerNotes(String notes) { this.notes = notes; }
     public void setServerCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
