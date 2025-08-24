@@ -12400,6 +12400,84 @@
           "SEND_WEBHOOK"
         ]
       },
+  "ServerTable": {
+  "type": "object",
+  "properties": {
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the server was created"
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Unique identifier for the server"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the server"
+    },
+    "ip": {
+      "type": "integer",
+      "description": "IP address of the server as integer"
+    },
+    "port": {
+      "type": "integer",
+      "description": "Port the server runs on"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the server"
+    },
+    "bannerImage": {
+      "type": "string",
+      "description": "URL or path to the server's banner image"
+    },
+    "logoImage": {
+      "type": "string",
+      "description": "URL or path to the server's logo image"
+    },
+    "serverTags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tags describing the server"
+    },
+    "websiteUrl": {
+      "type": "string",
+      "description": "The website URL of the server"
+    },
+    "discordUrl": {
+      "type": "string",
+      "description": "The Discord URL of the server"
+    },
+    "minecraftVersion": {
+      "type": "integer",
+      "description": "Minecraft version supported by the server"
+    },
+    "playerCount": {
+      "type": "integer",
+      "description": "Player count on the server"
+    },
+    "ownerId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "User ID of the server owner"
+    },
+    "status": {
+      "type": "enum",
+      "enum": [
+        "PENDING",
+        "ACCEPTED",
+        "REJECTED"
+      ],
+      "description": "Current status of the server"
+    }
+  },
+  "required": [
+    "createdAt", "id", "name", "ip", "port", "description", "bannerImage", "logoImage",
+    "serverTags", "websiteUrl", "discordUrl", "minecraftVersion", "playerCount", "ownerId", "status"
+  ]
+},
       "JoinableMemberOrganizationRoleTable": {
         "type": "object",
         "properties": {
@@ -15522,6 +15600,59 @@
           "content"
         ]
       },
+      "ServerTag": {
+        "type": "string",
+        "enum": [
+          "SURVIVAL",
+          "CREATIVE",
+          "HARDCORE",
+          "CROSSPLAY",
+          "FACTIONS",
+          "TOWNY",
+          "MINIGAMES",
+          "PVP",
+          "LIFESTEAL",
+          "PVE",
+          "ECONOMY",
+          "MCMMO",
+          "EVENTS",
+          "LAND_CLAIM",
+          "PARKOUR",
+          "RANKS",
+          "SMP",
+          "BOSSES",
+          "RPG",
+          "JOBS",
+          "CASUAL",
+          "COMPETITIVE",
+          "BUILD",
+          "ANARCHY",
+          "MISC"
+        ]
+      },
+      "ServerTagData": {
+        "type": "object",
+        "properties": {
+          "children": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ServerTag"
+        },
+        "uniqueItems": true
+          },
+          "name": {
+        "type": "string"
+          },
+          "parent": {
+        "$ref": "#/components/schemas/ServerTag"
+          }
+        },
+        "required": [
+          "name",
+          "parent",
+          "children"
+        ]
+      },
       "Tag": {
         "type": "string",
         "enum": [
@@ -15558,7 +15689,7 @@
           "LIBRARY",
           "MISC"
         ]
-      },
+      },  
       "TagData": {
         "type": "object",
         "properties": {

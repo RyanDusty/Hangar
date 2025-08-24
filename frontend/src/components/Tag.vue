@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+AV<script lang="ts" setup>
 interface Color {
   foreground?: string;
   background?: string;

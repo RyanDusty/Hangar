@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-const serverList = defineProps<{
+const props = defineProps<{
     serverName?: string;
     serverInformation?: string;
     serverBanner?: MediaImage;
@@ -19,14 +19,10 @@ const serverList = defineProps<{
         <div class="text-1xl text-center mb-2 mt-1">
             Here you can find a list of Minecraft Servers which utilise ProjectKorra as one of their core plugins.
         </div>
-     </slot>
-      </template>
-  <!-- Filter Column -->
-    
+     </slot>    
 
       <!--Server List-->
         <div class="p-5"></div>
-         
           <hr class="divider opacity-30"/>
             <div class="flex w-100% mb-5">
               <div class="server-list">
@@ -34,19 +30,18 @@ const serverList = defineProps<{
                 <div class="flex-col-right">
                 <!-- Servers -->
                 <div class="servers"> 
-                  </div>
+                </hr>
                     <hr class="divider opacity-30"/>
-                  </div>
+                </hr>
                     <hr class="divider opacity-30"/>
-                  </div>
+                </hr>
                     <hr class="divider opacity-30"/>
-                  </div>
+                </hr>
                     <hr class="divider opacity-30"/>
-                  </div>
+                </hr>
                     <hr class="divider opacity-30"/>
-            </div>
+                </hr>
           </div>
-       </slot>
 <script setup>
 </script>
 <style lang="css" scoped>

@@ -1,5 +1,6 @@
-package io.papermc.hangar.model.db;
+package io.papermc.hangar.model.db.serverlist;
 
+import io.papermc.hangar.model.db.Table;
 import org.jdbi.v3.core.mapper.reflect.JdbiConstructor;
 import java.sql.Timestamp;
 
@@ -41,14 +42,7 @@ public class ServerVerification extends Table {
     public String getServerNotes() { return this.notes; }
     public Timestamp getServerCreatedAt() { return this.createdAt; }
     public Timestamp getServerUpdatedAt() { return this.updatedAt; }
-    // SET METHODS
-    public void setVerificationId(long id) { this.id = id; }
-    public void setServerId(long serverId) { this.serverId = serverId; }
-    public void setReviewerId(long reviewerId) { this.reviewerId = reviewerId; }
-    public void setVerificationStatus(Status status) { this.status = status; }
-    public void setServerNotes(String notes) { this.notes = notes; }
-    public void setServerCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
-    public void setServerUpdatedAt(Timestamp updatedAt) { this.updatedAt = updatedAt; }
+
 
     @Override
     public String toString() {

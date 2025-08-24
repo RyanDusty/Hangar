@@ -54,7 +54,6 @@ export enum Category {
   Config = "config",
   Other = "other",
   Undefined = "undefined",
-  ServerList = "server_list",
 }
 
 export interface CategoryData {
@@ -1113,6 +1112,48 @@ export interface JobTable {
 export enum JobType {
   SEND_EMAIL = "SEND_EMAIL",
   SEND_WEBHOOK = "SEND_WEBHOOK",
+}
+
+export interface ServerTable {
+  /**
+   * Timestamp when the server was created
+   * @format date-time
+   */
+  createdAt: string;
+  /**
+   * Unique identifier for the server
+   * @format int64
+   */
+  id: number;
+  /** Name of the server */
+  name: string;
+  /** IP address of the server as integer */
+  ip: number;
+  /** Port the server runs on */
+  port: number;
+  /** Description of the server */
+  description: string;
+  /** URL or path to the server's banner image */
+  bannerImage: string;
+  /** URL or path to the server's logo image */
+  logoImage: string;
+  /** Tags describing the server */
+  serverTags: string[];
+  /** The website URL of the server */
+  websiteUrl: string;
+  /** The Discord URL of the server */
+  discordUrl: string;
+  /** Minecraft version supported by the server */
+  minecraftVersion: number;
+  /** Player count on the server */
+  playerCount: number;
+  /**
+   * User ID of the server owner
+   * @format int64
+   */
+  ownerId: number;
+  /** Current status of the server */
+  status: "PENDING" | "ACCEPTED" | "REJECTED";
 }
 
 export interface JoinableMemberOrganizationRoleTable {
@@ -2238,6 +2279,41 @@ export interface SignupForm {
 export interface StringContent {
   /** A non-null, non-empty string */
   content: string;
+}
+
+export enum ServerTag {
+  SURVIVAL = "SURVIVAL",
+  CREATIVE = "CREATIVE",
+  HARDCORE = "HARDCORE",
+  CROSSPLAY = "CROSSPLAY",
+  FACTIONS = "FACTIONS",
+  TOWNY = "TOWNY",
+  MINIGAMES = "MINIGAMES",
+  PVP = "PVP",
+  LIFESTEAL = "LIFESTEAL",
+  PVE = "PVE",
+  ECONOMY = "ECONOMY",
+  MCMMO = "MCMMO",
+  EVENTS = "EVENTS",
+  LAND_CLAIM = "LAND_CLAIM",
+  PARKOUR = "PARKOUR",
+  RANKS = "RANKS",
+  SMP = "SMP",
+  BOSSES = "BOSSES",
+  RPG = "RPG",
+  JOBS = "JOBS",
+  CASUAL = "CASUAL",
+  COMPETITIVE = "COMPETITIVE",
+  BUILD = "BUILD",
+  ANARCHY = "ANARCHY",
+  MISC = "MISC",
+}
+
+export interface ServerTagData {
+  /** @uniqueItems true */
+  children: ServerTag[];
+  name: string;
+  parent: ServerTag;
 }
 
 export enum Tag {

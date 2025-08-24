@@ -15,7 +15,6 @@ public enum ServerTag {
     CREATIVE,
     HARDCORE,
     CROSSPLAY,
-    CRACKED,
     FACTIONS,
     TOWNY,
     MINIGAMES,
